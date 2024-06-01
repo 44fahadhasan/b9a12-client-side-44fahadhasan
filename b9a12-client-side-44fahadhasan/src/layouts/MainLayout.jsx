@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Footer from "../pages/mainPages/shared/Footer/Footer";
 import Navbar from "../pages/mainPages/shared/Navbar/Navbar";
@@ -5,6 +6,18 @@ import Navbar from "../pages/mainPages/shared/Navbar/Navbar";
 const MainLayout = () => {
   const { pathname } = useLocation();
   const isShow = pathname === "/login" || pathname === "/register";
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === "/") {
+      document.title = "Discussion - Home";
+      return;
+    }
+    document.title = `Discussion - ${location.pathname
+      .replaceAll("/", " - ")
+      .replaceAll("-", " ")}`;
+  }, [location]);
 
   return (
     <div>
