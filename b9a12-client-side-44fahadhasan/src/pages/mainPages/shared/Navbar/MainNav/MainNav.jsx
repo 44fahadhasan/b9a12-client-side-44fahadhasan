@@ -1,12 +1,17 @@
 import { useState } from "react";
-
+import { Link } from "react-router-dom";
 import DrawerVerticalMenu from "../../../../../components/DrawerVerticalMenu/DrawerVerticalMenu";
 import LogoutButton from "../../../../../components/LogoutButton/LogoutButton";
 import MenuListItems from "../../../../../components/MenuListItems/MenuListItems";
 import SiteLogo from "../../../../../components/SiteLogo/SiteLogo";
+import useAuth from "../../../../../hooks/useAuth";
+import useLogout from "../../../../../hooks/useLogout";
 
 const MainNav = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
+
+  const { user } = useAuth();
+  const { toogleComponent } = useLogout();
 
   return (
     <section className="flex shadow-sm py-3 px-4 sm:px-10 bg-[#212121] font-[sans-serif] min-h-[70px] tracking-wide relative ">
@@ -23,13 +28,27 @@ const MainNav = () => {
 
         {/* vertical menu for large device start here */}
         <div className="max-lg:hidden lg:!block max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-40 max-lg:before:inset-0 max-lg:before:z-50">
-          {/* menu list for small and large device */}
           <MenuListItems />
         </div>
         {/* vertical menu for large device end here */}
 
         {/* right side part of navbar */}
         <div className="flex items-center max-sm:ml-auto">
+          {/* user profile */}
+          {toogleComponent && (
+            <div className="lg:mr-5">
+              <Link to="Profile">
+                <img
+                  src={
+                    user?.photoURL ||
+                    "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                  }
+                  className="w-[46px] rounded-full object-cover"
+                />
+              </Link>
+            </div>
+          )}
+
           {/* logout button */}
           <div className="hidden lg:block">
             <LogoutButton />

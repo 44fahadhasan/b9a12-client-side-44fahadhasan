@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import SociaList from "../../../../../components/SociaList/SociaList";
+import useLogout from "../../../../../hooks/useLogout";
 
 const TopNavbar = () => {
-  const user = true;
-
+  const { toogleComponent } = useLogout();
   return (
     <section className="bg-[#E6E7E8] min-h-[40px] px-4 py-2 sm:px-10 flex items-center max-sm:flex-col">
       <button type="button" className="text-[#605e5e] text-sm">
@@ -40,19 +40,19 @@ const TopNavbar = () => {
         info@discussion.com
       </button>
 
-      <div className="sm:ml-auto text-[#605e5e]">
-        {user ? (
+      <div className="sm:ml-auto">
+        {toogleComponent ? (
           <SociaList />
         ) : (
-          <>
+          <span className="font-semibold">
             <Link to="login" className="text-[#605e5e] text-sm mr-1">
               Login
             </Link>
             /
-            <Link to="register" className="text-[#605e5e] text-sm ml-1">
+            <Link to="register" className="text-[#FA4B35] text-sm ml-1">
               Register
             </Link>
-          </>
+          </span>
         )}
       </div>
     </section>
