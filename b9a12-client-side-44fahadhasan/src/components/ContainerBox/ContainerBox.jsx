@@ -1,7 +1,9 @@
 import PropTypes from "prop-types";
 
 const ContainerBox = ({ children }) => {
-  return <section className="container w-[87%] mx-auto">{children}</section>;
+  return (
+    <section className="container w-[87%] mx-auto py-16">{children}</section>
+  );
 };
 
 ContainerBox.propTypes = {
