@@ -9,13 +9,13 @@ import routes from "./routes/Route";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <div className="max-w-screen-2xl">
+    <>
       <AuthProvider>
         <LogoutProvider>
           <RouterProvider router={routes} />
           <Tost />
         </LogoutProvider>
       </AuthProvider>
-    </div>
+    </>
   </React.StrictMode>
 );
