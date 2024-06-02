@@ -3,12 +3,12 @@ import ContainerBox from "../../../../components/ContainerBox/ContainerBox";
 
 const Footer = () => {
   return (
-    <footer className="font-sans tracking-wide bg-[#212121] py-12 px-16">
+    <footer className="font-[sans-serif] bg-[#212121] py-12">
       <ContainerBox>
         <div className="grid max-md-grid-cols-1 lg:grid-cols-2 gap-20">
           <div>
             <h4 className="text-gray-100 font-bold text-lg">About Us</h4>
-            <p className="text-sm mt-6 text-gray-300">
+            <p className="text-base mt-6 text-gray-300">
               Discussion was founded in 2001 with the mission to deliver
               accurate, fair, and comprehensive news to our readers. Our team is
               committed to upholding the highest standards of journalism,
@@ -33,7 +33,7 @@ const Footer = () => {
                     />
                   </svg>
                 </div>
-                <a to="" className="text-gray-100 text-sm ml-4">
+                <a to="" className="text-gray-100 text-base ml-4">
                   <small className="block">Tel</small>
                   <strong>180-548-2588</strong>
                 </a>
@@ -53,7 +53,7 @@ const Footer = () => {
                     />
                   </svg>
                 </div>
-                <a to="" className="text-gray-100 text-sm ml-4">
+                <a to="" className="text-gray-100 text-base ml-4">
                   <small className="block">Mail</small>
                   <strong>info@discussion.com</strong>
                 </a>
@@ -63,7 +63,7 @@ const Footer = () => {
 
           <div>
             <h4 className="text-gray-100 font-bold text-lg">Newsletter</h4>
-            <p className="text-sm mt-6 text-gray-300">
+            <p className="text-base mt-6 text-gray-300">
               Subscribe to our newsletter and stay up to date with the latest
               news, updates, and exclusive offers. Get valuable insights. Join
               our community today!
@@ -73,11 +73,11 @@ const Footer = () => {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="w-full outline-none text-gray-300 text-sm bg-transparent pl-4"
+                className="w-full outline-none text-gray-300 text-base bg-transparent pl-4"
               />
               <button
                 type="button"
-                className="bg-gray-100 hover:bg-white transition-all text-gray-600 font-semibold text-sm rounded-full px-5 py-2 ml-4"
+                className="bg-gray-100 hover:bg-white transition-all text-gray-600 font-semibold text-base rounded-full px-5 py-2 ml-4"
               >
                 Submit
               </button>
@@ -172,23 +172,32 @@ const Footer = () => {
         <div className="lg:flex lg:item-center mt-12">
           <ul className="flex flex-wrap gap-4">
             <li>
-              <Link to="" className="text-gray-300 hover:text-gray-100 text-sm">
+              <Link
+                to=""
+                className="text-gray-300 hover:text-gray-100 text-base"
+              >
                 Terms of Service
               </Link>
             </li>
             <li>
-              <Link to="" className="text-gray-300 hover:text-gray-100 text-sm">
+              <Link
+                to=""
+                className="text-gray-300 hover:text-gray-100 text-base"
+              >
                 Privacy Policy
               </Link>
             </li>
             <li>
-              <Link to="" className="text-gray-300 hover:text-gray-100 text-sm">
+              <Link
+                to=""
+                className="text-gray-300 hover:text-gray-100 text-base"
+              >
                 Security
               </Link>
             </li>
           </ul>
 
-          <p className="text-sm text-gray-300 lg:ml-auto max-lg:mt-6">
+          <p className="text-base text-gray-300 lg:ml-auto max-lg:mt-6">
             Copyright © {new Date().getFullYear()}
             <Link to="/" className="hover:underline mx-1">
               Discussion

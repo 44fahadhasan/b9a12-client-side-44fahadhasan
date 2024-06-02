@@ -61,7 +61,7 @@ const PriceCard = ({
           </Link>
         </div>
 
-        <div className="pb-5">
+        <div className="pb-5 px-2">
           <p className="text-sm mt-4 text-center">{footerTxt}</p>
         </div>
       </div>
