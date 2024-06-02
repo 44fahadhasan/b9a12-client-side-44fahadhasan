@@ -31,8 +31,9 @@ const PricePlans = () => {
     <div className="font-[sans-serif] text-[#333] bg-gray-100 px-4 py-8">
       <div className="max-w-5xl mx-auto">
         <div className="text-center">
-          <h2 className="text-2xl font-bold mb-2">Pricing Plans</h2>
-          <p className="text-sm">Change your plant according your needs</p>
+          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+            Pricing Plans
+          </h2>
         </div>
         <div className="flex mx-auto mt-12 bg-white rounded-full max-w-[100px]">
           <button className="text-white font-semibold w-full text-sm bg-[#333] py-2.5 px-4 rounded-full">
