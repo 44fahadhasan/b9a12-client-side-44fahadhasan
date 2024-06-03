@@ -21,25 +21,20 @@ const ArticleCard = () => {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
               auctor auctor arcu.
             </p>
-            <div className="flex flex-wrap items-center cursor-pointer border  w-full px-4 py-2 mt-6">
+            <div className="flex flex-wrap items-center  border  w-full px-4 py-2 mt-6">
               <img
                 src="https://readymadeui.com/profile_2.webp"
                 className="w-9 h-9 rounded-full"
               />
               <div className="ml-4 flex-1">
                 <p className="text-sm text-black font-semibold">John Doe</p>
-                <p className="text-xs text-gray-400">Marketing coordinator</p>
               </div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-4 fill-gray-400"
-                viewBox="0 0 32 32"
+              <button
+                disabled={false}
+                className="bg-[#F94B35] text-white inline-block text-center px-2 py-1 rounded text-md font-medium"
               >
-                <path
-                  d="M13 16c0 1.654 1.346 3 3 3s3-1.346 3-3-1.346-3-3-3-3 1.346-3 3zm0 10c0 1.654 1.346 3 3 3s3-1.346 3-3-1.346-3-3-3-3 1.346-3 3zm0-20c0 1.654 1.346 3 3 3s3-1.346 3-3-1.346-3-3-3-3 1.346-3 3z"
-                  data-original="#000000"
-                />
-              </svg>
+                details
+              </button>
             </div>
           </div>
         </div>
