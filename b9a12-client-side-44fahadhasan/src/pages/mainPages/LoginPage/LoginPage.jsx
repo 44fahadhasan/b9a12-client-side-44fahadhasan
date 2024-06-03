@@ -212,7 +212,7 @@ const LoginPage = () => {
             <p className="text-sm text-center mt-6">
               Don&apos;t have an account{" "}
               <Link
-                to="/register"
+                to="/Register"
                 className="text-[#FA4B35] font-semibold hover:underline ml-1 whitespace-nowrap"
               >
                 Register here

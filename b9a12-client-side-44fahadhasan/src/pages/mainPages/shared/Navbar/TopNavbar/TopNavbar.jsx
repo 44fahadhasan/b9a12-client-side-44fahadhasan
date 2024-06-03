@@ -45,11 +45,11 @@ const TopNavbar = () => {
           <SociaList />
         ) : (
           <span className="font-semibold">
-            <Link to="login" className="text-[#605e5e] text-sm mr-1">
+            <Link to="Login" className="text-[#605e5e] text-sm mr-1">
               Login
             </Link>
             /
-            <Link to="register" className="text-[#FA4B35] text-sm ml-1">
+            <Link to="Register" className="text-[#FA4B35] text-sm ml-1">
               Register
             </Link>
           </span>

@@ -5,6 +5,8 @@ import ErrorPage from "../pages/commonPages/ErrorPage/ErrorPage";
 import HomeContainer from "../pages/mainPages/HomePage/HomeContainer/HomeContainer";
 import LoginPage from "../pages/mainPages/LoginPage/LoginPage";
 import RegisterPage from "../pages/mainPages/RegisterPage/RegisterPage";
+import AddArticlePage from "../pages/UserPages/AddArticlePage/AddArticlePage";
+import PrivateRoute from "./PrivateRoute";
 
 const routes = createBrowserRouter([
   {
@@ -18,12 +20,22 @@ const routes = createBrowserRouter([
         element: <HomeContainer />,
       },
       {
-        path: "login",
+        path: "Login",
         element: <LoginPage />,
       },
       {
-        path: "register",
+        path: "Register",
         element: <RegisterPage />,
+      },
+
+      // user private routes
+      {
+        path: "Add-Articles",
+        element: (
+          <PrivateRoute>
+            <AddArticlePage />
+          </PrivateRoute>
+        ),
       },
     ],
   },

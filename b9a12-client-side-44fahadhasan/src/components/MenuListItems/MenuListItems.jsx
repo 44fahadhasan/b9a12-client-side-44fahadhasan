@@ -42,7 +42,7 @@ const MenuListItems = ({ setToggleMenu }) => {
     },
   ];
 
-  const { handleLogOut } = useLogout();
+  const { handleLogOut, toogleComponent } = useLogout();
 
   return (
     <ul className="lg:flex lg:gap-x-10 max-lg:space-y-3 max-lg:fixed max-lg:bg-[#212121] max-lg:w-2/3 max-lg:min-w-full max-lg:top-0 max-lg:left-0 max-lg:p-4 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50">
@@ -61,12 +61,14 @@ const MenuListItems = ({ setToggleMenu }) => {
         <SiteLogo />
 
         {/* logout button for small device */}
-        <button
-          onClick={() => handleLogOut()}
-          className="px-4 py-2 text-sm rounded-full font-bold hover:text-white border-2 border-[#FB4C35] hover:bg-[#FB4C35] transition-all ease-in-out duration-300 hover:bg-transparent text-[#FB4C35]"
-        >
-          Logout
-        </button>
+        {toogleComponent && (
+          <button
+            onClick={() => handleLogOut()}
+            className="px-4 py-2 text-sm rounded-full font-bold hover:text-white border-2 border-[#FB4C35] hover:bg-[#FB4C35] transition-all ease-in-out duration-300 hover:bg-transparent text-[#FB4C35]"
+          >
+            Logout
+          </button>
+        )}
       </li>
       {/* website logo & other components for vertical menu end here */}
 
