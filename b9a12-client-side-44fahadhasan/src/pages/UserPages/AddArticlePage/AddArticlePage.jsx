@@ -31,6 +31,14 @@ const tagOptions = [
 ];
 
 const AddArticlePage = () => {
+  const publisherOptions = [
+    { name: "one" },
+    { name: "two" },
+    { name: "three" },
+    { name: "four" },
+    { name: "five" },
+  ];
+
   const [selectedOptions, setSelectedOptions] = useState([]);
 
   const [selectTag, setSelectTag] = useState([]);
@@ -171,7 +179,9 @@ const AddArticlePage = () => {
                 <option disabled value={""}>
                   publisher
                 </option>
-                <option>aita daynamic hobe</option>
+                {publisherOptions?.map((option, idx) => (
+                  <option key={idx}>{option?.name}</option>
+                ))}
               </PublisherSelect>
             </Field>
             {errors?.publisher?.type === "required" && (

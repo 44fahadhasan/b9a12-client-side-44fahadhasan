@@ -1,10 +1,26 @@
 import { FiSearch } from "react-icons/fi";
 import ContainerBox from "../../../components/ContainerBox/ContainerBox";
+import FilterDropdown from "../../../components/FilterDropdown/FilterDropdown";
 import SectionContent from "../../../components/SectionContent/SectionContent";
 import ArticleCard from "./ArticleCard/ArticleCard";
 
 const AllArticlesPage = () => {
   const articles = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+
+  const publisher = [
+    { name: "one" },
+    { name: "two" },
+    { name: "three" },
+    { name: "four" },
+    { name: "five" },
+  ];
+  const tag = [
+    { name: "one" },
+    { name: "two" },
+    { name: "three" },
+    { name: "four" },
+    { name: "five" },
+  ];
 
   return (
     <div className="bg-[#E6E7E8] font-[sans-serif]">
@@ -45,15 +61,10 @@ const AllArticlesPage = () => {
                 <label className="text-sm font-medium text-stone-600">
                   Filter by Publisher
                 </label>
-
-                <select
-                  id="manufacturer"
-                  className="mt-2 block w-full rounded-md border border-gray-100 bg-gray-100 px-2 py-2 shadow-sm outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-                >
-                  <option>Cadberry</option>
-                  <option>Starbucks</option>
-                  <option>Hilti</option>
-                </select>
+                <FilterDropdown
+                  disabledValue={"Publisher"}
+                  options={publisher}
+                />
               </div>
 
               {/* tags filter */}
@@ -61,15 +72,7 @@ const AllArticlesPage = () => {
                 <label className="text-sm font-medium text-stone-600">
                   Filter by Tags
                 </label>
-
-                <select
-                  id="manufacturer"
-                  className="mt-2 block w-full rounded-md border border-gray-100 bg-gray-100 px-2 py-2 shadow-sm outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-                >
-                  <option>Cadberry</option>
-                  <option>Starbucks</option>
-                  <option>Hilti</option>
-                </select>
+                <FilterDropdown disabledValue={"Tag"} options={tag} />
               </div>
             </div>
           </div>

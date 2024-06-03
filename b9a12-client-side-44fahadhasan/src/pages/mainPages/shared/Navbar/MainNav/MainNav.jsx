@@ -44,6 +44,7 @@ const MainNav = () => {
                     "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
                   }
                   className="w-[46px] rounded-full object-cover"
+                  referrerPolicy="no-referrer"
                 />
               </Link>
             </div>
