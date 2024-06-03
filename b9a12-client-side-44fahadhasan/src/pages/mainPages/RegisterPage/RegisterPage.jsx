@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import LoadingButtion from "../../../components/LoadingButtion/LoadingButtion";
 import SiteLogo from "../../../components/SiteLogo/SiteLogo";
 import useAuth from "../../../hooks/useAuth";
+import imgFileToUrl from "../../../utils/urlConverter";
 
 const RegisterPage = () => {
   const [togglePassword, setTogglePassword] = useState(true);
@@ -25,31 +26,41 @@ const RegisterPage = () => {
   const from = location.state?.from?.pathname || "/";
 
   // register from handle
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     setLoading(true);
+    // input field data
     const fullName = data.fullName;
-    const image = data.image;
+    const imageFile = data?.image[0];
     const email = data.email;
     const password = data.password;
 
-    // create a new user with email & password
-    createUserEmailAndPassword(email, password)
-      .then(() => {
-        // user profile info
-        updateUserProfile(fullName, image);
-        toast.success("Created an new account successfully");
-        setLoading(false);
-        navigate(from, { replace: true });
-      })
-      .catch((error) => {
-        toast.error(error?.message);
-        setLoading(false);
-      });
+    try {
+      // get img url form img hosting api
+      const imageUrl = await imgFileToUrl(imageFile);
 
-    resetField("fullName");
-    resetField("email");
-    resetField("image");
-    resetField("password");
+      // create a new user with email & password
+      createUserEmailAndPassword(email, password)
+        .then(() => {
+          // user profile info
+          updateUserProfile(fullName, imageUrl);
+          toast.success("Created an new account successfully");
+          setLoading(false);
+          navigate(from, { replace: true });
+        })
+        .catch((error) => {
+          toast.error(error?.message);
+          setLoading(false);
+        });
+
+      // clear input
+      resetField("fullName");
+      resetField("email");
+      resetField("image");
+      resetField("password");
+    } catch (error) {
+      toast.error(error?.message);
+      setLoading(false);
+    }
   };
 
   // toggle password
@@ -334,6 +345,7 @@ const RegisterPage = () => {
             </div>
             <div className="!mt-10">
               <button
+                disabled={loading}
                 type="submit"
                 className="w-full py-3 px-4 text-sm font-semibold rounded-full bg-[#333] hover:bg-[#FA4B35] text-white focus:outline-none transition-all duration-300"
               >
