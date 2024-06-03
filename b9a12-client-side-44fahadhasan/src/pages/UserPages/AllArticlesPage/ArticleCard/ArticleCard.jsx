@@ -6,7 +6,7 @@ const ArticleCard = () => {
     <div className="bg-white grid sm:grid-cols-1 hover:shadow-xl shadow-[0_2px_18px_-6px_rgba(0,0,0,0.2)] w-full max-w-xl  font-[sans-serif] mx-auto mt-4 transform hover:scale-105 transition-transform duration-300 premium_card rounded-md">
       <img
         src="https://i.ibb.co/G92LGLV/registration.jpg"
-        className="w-full h-[244px] px-[5px] z-10 pt-[5px] rounded-md"
+        className="w-full h-[244px] px-[5px] z-10 pt-[5px] rounded-md object-cover"
       />
 
       <div className="group overflow-hidden">
