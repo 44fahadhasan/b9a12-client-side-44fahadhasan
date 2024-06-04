@@ -35,11 +35,10 @@ const ArticleCard = ({ article }) => {
               {description?.slice(0, 100)}...
             </p>
             <div className="flex flex-wrap items-center  border  w-full px-4 py-2 mt-6">
-              <img
-                src="https://readymadeui.com/profile_2.webp"
-                className="w-9 h-9 rounded-full"
-              />
-              <div className="ml-4 flex-1">
+              <p className="text-base text-[#FB4C35] font-semibold">
+                Publisher:
+              </p>
+              <div className="ml-1 flex-1">
                 <p className="text-sm text-black font-semibold">{publisher}</p>
               </div>
               {isPremiun ? (

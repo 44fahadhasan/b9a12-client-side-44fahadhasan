@@ -15,6 +15,7 @@ import ContainerBox from "../../../components/ContainerBox/ContainerBox";
 import LoadingButtion from "../../../components/LoadingButtion/LoadingButtion";
 import SectionContent from "../../../components/SectionContent/SectionContent";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import usePublisher from "../../../hooks/usePublisher";
 import imgFileToUrl from "../../../utils/urlConverter";
 const animatedComponents = makeAnimated();
 
@@ -31,20 +32,14 @@ const tagOptions = [
 ];
 
 const AddArticlePage = () => {
-  const publisherOptions = [
-    { name: "one" },
-    { name: "two" },
-    { name: "three" },
-    { name: "four" },
-    { name: "five" },
-  ];
-
   const [selectedOptions, setSelectedOptions] = useState([]);
 
   const [selectTag, setSelectTag] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const axiosPublic = useAxiosPublic();
+
+  const { publishers } = usePublisher();
 
   // tag
   const handleChange = (selectedData) => {
@@ -180,7 +175,7 @@ const AddArticlePage = () => {
                 <option disabled value={""}>
                   publisher
                 </option>
-                {publisherOptions?.map((option, idx) => (
+                {publishers?.map((option, idx) => (
                   <option key={idx}>{option?.name}</option>
                 ))}
               </PublisherSelect>

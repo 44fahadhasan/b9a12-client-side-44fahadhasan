@@ -10,6 +10,7 @@ import {
 import PropTypes from "prop-types";
 import { createContext, useEffect, useState } from "react";
 import auth from "../firebase/firebase.config";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 export const AuthContext = createContext(null);
 
@@ -19,12 +20,14 @@ const AuthProvider = ({ children }) => {
 
   console.log("AuthProvider console =>", user);
 
+  const axiosPublic = useAxiosPublic();
+
   useEffect(() => {
     const unSubscribe = loggedUserObserver;
 
     // clear observer firebase mathod
     return () => unSubscribe();
-  }, []);
+  }, [loggedUserObserver]);
 
   const googleProvider = new GoogleAuthProvider();
 
@@ -60,17 +63,31 @@ const AuthProvider = ({ children }) => {
   };
 
   // Get the currently login user data (observer)
-  const loggedUserObserver = () => {
+  var loggedUserObserver = () => {
     onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
         // User is login
         setUser(currentUser);
-        setLoading(false);
+
+        const userInfo = { email: currentUser?.email };
+
+        axiosPublic.post("/jwt", userInfo).then((res) => {
+          if (res?.data?.token) {
+            // set token
+            localStorage.setItem("token", res?.data?.token);
+          }
+
+          setLoading(false);
+        });
+
         // login end
       } else {
         // User is logout
         setLoading(false);
         setUser(null);
+
+        // remove token
+        localStorage.removeItem("token");
         // logout end
       }
     });

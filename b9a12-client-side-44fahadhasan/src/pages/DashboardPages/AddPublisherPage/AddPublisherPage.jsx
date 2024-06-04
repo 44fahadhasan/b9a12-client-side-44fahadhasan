@@ -52,7 +52,7 @@ const AddPublisherPage = () => {
             setLoading(false);
 
             // clear from filed
-            resetField("title");
+            resetField("name");
             resetField("imageFile");
           }
         })
