@@ -228,6 +228,7 @@ const RegisterPage = () => {
                 <div className="relative flex items-center">
                   <input
                     {...register("image", { required: true })}
+                    accept="image/*"
                     type="file"
                     className="bg-transparent border border-gray-400 w-full text-sm pl-4 pr-10 py-2.5 rounded outline-[#333]"
                     placeholder="Enter password"

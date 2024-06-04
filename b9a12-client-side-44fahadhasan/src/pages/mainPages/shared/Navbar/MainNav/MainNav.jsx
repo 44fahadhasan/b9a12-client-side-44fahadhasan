@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import DrawerVerticalMenu from "../../../../../components/DrawerVerticalMenu/DrawerVerticalMenu";
 import LogoutButton from "../../../../../components/LogoutButton/LogoutButton";
 import MenuListItems from "../../../../../components/MenuListItems/MenuListItems";
@@ -12,6 +12,8 @@ const MainNav = () => {
 
   const { user } = useAuth();
   const { toogleComponent } = useLogout();
+
+  const { pathname } = useLocation();
 
   return (
     <section className="flex shadow-sm py-3 px-4 sm:px-10 bg-[#212121] font-[sans-serif] min-h-[70px] tracking-wide relative ">
@@ -37,13 +39,17 @@ const MainNav = () => {
           {/* user profile */}
           {toogleComponent && (
             <div className="lg:mr-5">
-              <Link to="Profile">
+              <Link to="My-Profile">
                 <img
                   src={
                     user?.photoURL ||
                     "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
                   }
-                  className="w-[46px] rounded-full object-cover"
+                  className={`w-[46px] rounded-full object-cover ${
+                    pathname === "/My-Profile"
+                      ? "ring-[#FB4C35] ring"
+                      : undefined
+                  }`}
                   referrerPolicy="no-referrer"
                 />
               </Link>

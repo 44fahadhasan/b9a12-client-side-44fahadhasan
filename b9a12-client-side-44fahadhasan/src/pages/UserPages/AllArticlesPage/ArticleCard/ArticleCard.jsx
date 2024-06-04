@@ -2,7 +2,7 @@
 
 import "./style.css";
 const ArticleCard = () => {
-  const isPremiun = false;
+  const isPremiun = !true;
 
   return (
     <div
@@ -39,14 +39,24 @@ const ArticleCard = () => {
               <div className="ml-4 flex-1">
                 <p className="text-sm text-black font-semibold">John Doe</p>
               </div>
-              <button
-                disabled={!isPremiun}
-                className={`${
-                  isPremiun ? "bg-[#F94B35]" : "bg-[#444444ca]"
-                } text-white inline-block text-center px-2 py-1 rounded text-md font-medium `}
-              >
-                details
-              </button>
+              {isPremiun ? (
+                <>
+                  <button
+                    disabled={!isPremiun}
+                    className={`${
+                      isPremiun ? "bg-[#F94B35]" : "bg-[#444444ca]"
+                    } text-white inline-block text-center px-2 py-1 rounded text-md font-medium `}
+                  >
+                    details
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button className="bg-[#F94B35] text-white inline-block text-center px-2 py-1 rounded text-md font-medium">
+                    details
+                  </button>
+                </>
+              )}
             </div>
           </div>
         </div>

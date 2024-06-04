@@ -156,6 +156,7 @@ const AddArticlePage = () => {
               </Label>
               <Input
                 {...register("imageFile", { required: true })}
+                accept="image/*"
                 type="file"
                 className="px-2 py-2 w-full border-b-2 focus:border-[#333] outline-none text-base bg-white"
               />

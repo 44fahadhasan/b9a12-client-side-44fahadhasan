@@ -4,6 +4,7 @@ import ErrorPage from "../pages/commonPages/ErrorPage/ErrorPage";
 // import HomePage from "../pages/mainPages/HomePage/HomePage";
 import AddArticlePage from "../pages/UserPages/AddArticlePage/AddArticlePage";
 import AllArticlesPage from "../pages/UserPages/AllArticlesPage/AllArticlesPage";
+import MyProfilePage from "../pages/UserPages/MyProfilePage/MyProfilePage";
 import HomeContainer from "../pages/mainPages/HomePage/HomeContainer/HomeContainer";
 import LoginPage from "../pages/mainPages/LoginPage/LoginPage";
 import RegisterPage from "../pages/mainPages/RegisterPage/RegisterPage";
@@ -41,6 +42,14 @@ const routes = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AddArticlePage />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "My-Profile",
+        element: (
+          <PrivateRoute>
+            <MyProfilePage />
           </PrivateRoute>
         ),
       },
