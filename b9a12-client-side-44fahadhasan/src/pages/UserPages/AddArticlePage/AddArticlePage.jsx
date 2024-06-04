@@ -92,7 +92,7 @@ const AddArticlePage = () => {
               text: "Article created successfully",
               icon: "success",
               confirmButtonText: "Done",
-              confirmButtonColor: "#6fbe00",
+              confirmButtonColor: "#212121",
             });
 
             setLoading(false);

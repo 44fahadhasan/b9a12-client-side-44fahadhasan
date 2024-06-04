@@ -32,7 +32,7 @@ const Dashboard = () => {
       </section>
 
       {/* dynamic page render here */}
-      <section className="grow">
+      <section className="grow bg-[#E6E7E8]">
         <Outlet />
       </section>
     </main>
