@@ -21,7 +21,6 @@ const tag = [
   { name: "four" },
   { name: "five" },
 ];
-
 const AllArticlesPage = () => {
   const axiosPublic = useAxiosPublic();
 

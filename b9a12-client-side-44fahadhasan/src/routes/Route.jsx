@@ -2,6 +2,11 @@ import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 import ErrorPage from "../pages/commonPages/ErrorPage/ErrorPage";
 // import HomePage from "../pages/mainPages/HomePage/HomePage";
+import Dashboard from "../layouts/Dashboard";
+import AddPublisherPage from "../pages/DashboardPages/AddPublisherPage/AddPublisherPage";
+import AllArticlesPageAdmin from "../pages/DashboardPages/AllArticlesPageAdmin/AllArticlesPageAdmin";
+import AllUsersPage from "../pages/DashboardPages/AllUsersPage/AllUsersPage";
+import DashboardPage from "../pages/DashboardPages/DashboardPage/DashboardPage";
 import AddArticlePage from "../pages/UserPages/AddArticlePage/AddArticlePage";
 import AllArticlesPage from "../pages/UserPages/AllArticlesPage/AllArticlesPage";
 import ArticleDetails from "../pages/UserPages/ArticleDetails/ArticleDetails";
@@ -12,6 +17,7 @@ import RegisterPage from "../pages/mainPages/RegisterPage/RegisterPage";
 import PrivateRoute from "./PrivateRoute";
 
 const routes = createBrowserRouter([
+  // main layout routes
   {
     path: "/",
     element: <MainLayout />,
@@ -63,6 +69,31 @@ const routes = createBrowserRouter([
             <MyProfilePage />
           </PrivateRoute>
         ),
+      },
+    ],
+  },
+
+  // dashboard layout routes
+
+  {
+    path: "Dashboard",
+    element: <Dashboard />,
+    children: [
+      {
+        index: true,
+        element: <DashboardPage />,
+      },
+      {
+        path: "All-Users",
+        element: <AllUsersPage />,
+      },
+      {
+        path: "All-Articles",
+        element: <AllArticlesPageAdmin />,
+      },
+      {
+        path: "Add-Publisher",
+        element: <AddPublisherPage />,
       },
     ],
   },

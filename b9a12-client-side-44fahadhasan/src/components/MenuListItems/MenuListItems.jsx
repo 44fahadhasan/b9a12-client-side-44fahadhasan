@@ -45,9 +45,9 @@ const MenuListItems = ({ setToggleMenu }) => {
   const { handleLogOut, toogleComponent } = useLogout();
 
   return (
-    <ul className="lg:flex lg:gap-x-10 max-lg:space-y-3 max-lg:fixed max-lg:bg-[#212121] max-lg:w-2/3 max-lg:min-w-full max-lg:top-0 max-lg:left-0 max-lg:p-4 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50">
+    <ul className="xl:flex xl:gap-x-10 max-xl:space-y-3 max-xl:fixed max-xl:bg-[#212121] max-xl:w-2/3 max-xl:min-w-full max-xl:top-0 max-xl:left-0 max-xl:p-4 max-xl:h-full max-xl:shadow-md max-xl:overflow-auto z-50">
       {/* website logo & other components for vertical menu start here */}
-      <li className="mb-6 hidden max-lg:flex justify-between items-center">
+      <li className="mb-6 hidden max-xl:flex justify-between items-center">
         {/* menu close button */}
         <button
           type="button"
@@ -79,7 +79,7 @@ const MenuListItems = ({ setToggleMenu }) => {
           className={`${
             (listItem?.isAdmin ? "hidden" : undefined) ||
             (listItem?.isPremium ? "hidden" : undefined)
-          } max-lg:border-b max-lg:py-3 max-lg:px-3 relative lg:hover:after:absolute lg:after:bg-white lg:after:w-0 lg:hover:after:w-full lg:hover:after:h-[2px] lg:after:block lg:after:top-6 lg:after:transition-all lg:after:duration-300 text-[15px] text-white`}
+          } max-xl:border-b max-xl:py-3 max-xl:px-3 relative xl:hover:after:absolute xl:after:bg-white xl:after:w-0 xl:hover:after:w-full xl:hover:after:h-[2px] xl:after:block xl:after:top-6 xl:after:transition-all xl:after:duration-300 text-[15px] text-white`}
         >
           <NavLink
             to={listItem?.path}

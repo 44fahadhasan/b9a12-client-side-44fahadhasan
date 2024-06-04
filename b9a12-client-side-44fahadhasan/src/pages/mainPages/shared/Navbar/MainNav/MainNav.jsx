@@ -17,7 +17,7 @@ const MainNav = () => {
 
   return (
     <section className="flex shadow-sm py-3 px-4 sm:px-10 bg-[#212121] font-[sans-serif] min-h-[70px] tracking-wide relative ">
-      <div className="flex flex-wrap items-center justify-between lg:gap-y-4 gap-y-6 gap-x-4 w-full">
+      <div className="flex flex-wrap items-center justify-between xl:gap-y-4 gap-y-6 gap-x-4 w-full">
         {/* website logo */}
         <SiteLogo />
 
@@ -29,7 +29,7 @@ const MainNav = () => {
         {/* horizontal drawer menu for small device end here */}
 
         {/* vertical menu for large device start here */}
-        <div className="max-lg:hidden lg:!block max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-40 max-lg:before:inset-0 max-lg:before:z-50">
+        <div className="max-xl:hidden xl:!block max-xl:before:fixed max-xl:before:bg-black max-xl:before:opacity-40 max-xl:before:inset-0 max-xl:before:z-50">
           <MenuListItems />
         </div>
         {/* vertical menu for large device end here */}
@@ -38,7 +38,7 @@ const MainNav = () => {
         <div className="flex items-center max-sm:ml-auto">
           {/* user profile */}
           {toogleComponent && (
-            <div className="lg:mr-5">
+            <div className="xl:mr-5">
               <Link to="My-Profile">
                 <img
                   src={
@@ -57,7 +57,7 @@ const MainNav = () => {
           )}
 
           {/* logout button */}
-          <div className="hidden lg:block">
+          <div className="hidden xl:block">
             <LogoutButton />
           </div>
 
@@ -66,7 +66,7 @@ const MainNav = () => {
             onClick={() => {
               setToggleMenu(true);
             }}
-            className="lg:hidden ml-7"
+            className="xl:hidden ml-7"
           >
             <svg
               className="w-7 h-7"
