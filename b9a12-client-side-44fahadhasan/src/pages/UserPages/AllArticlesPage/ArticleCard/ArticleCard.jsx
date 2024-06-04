@@ -1,8 +1,13 @@
-// import PropTypes from 'prop-types';
-
+import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 import "./style.css";
-const ArticleCard = () => {
+
+const ArticleCard = ({ article }) => {
   const isPremiun = !true;
+
+  const { _id, title, image, publisher, description } = article || {};
+
+  const navigate = useNavigate();
 
   return (
     <div
@@ -11,7 +16,10 @@ const ArticleCard = () => {
       }`}
     >
       <img
-        src="https://i.ibb.co/G92LGLV/registration.jpg"
+        src={
+          image ||
+          "https://images.unsplash.com/photo-1587614387466-0a72ca909e16?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80"
+        }
         className="w-full h-[244px] px-[5px] z-10 pt-[5px] rounded-md object-cover"
       />
 
@@ -22,14 +30,9 @@ const ArticleCard = () => {
           }`}
         >
           <div className="px-4 py-6 z-10">
-            <h3 className="text-xl font-semibold">Web design template</h3>
+            <h3 className="text-xl font-semibold">{title?.slice(0, 27)}</h3>
             <p className="mt-2 text-sm text-gray-400">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-              auctor auctor arcu.
-            </p>
-            <p className="mt-2 text-sm text-gray-400">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-              auctor auctor arcu.
+              {description?.slice(0, 100)}...
             </p>
             <div className="flex flex-wrap items-center  border  w-full px-4 py-2 mt-6">
               <img
@@ -37,11 +40,12 @@ const ArticleCard = () => {
                 className="w-9 h-9 rounded-full"
               />
               <div className="ml-4 flex-1">
-                <p className="text-sm text-black font-semibold">John Doe</p>
+                <p className="text-sm text-black font-semibold">{publisher}</p>
               </div>
               {isPremiun ? (
                 <>
                   <button
+                    onClick={() => navigate(`/Article-Details/${_id}`)}
                     disabled={!isPremiun}
                     className={`${
                       isPremiun ? "bg-[#F94B35]" : "bg-[#444444ca]"
@@ -52,7 +56,10 @@ const ArticleCard = () => {
                 </>
               ) : (
                 <>
-                  <button className="bg-[#F94B35] text-white inline-block text-center px-2 py-1 rounded text-md font-medium">
+                  <button
+                    onClick={() => navigate(`/Article-Details/${_id}`)}
+                    className="bg-[#F94B35] text-white inline-block text-center px-2 py-1 rounded text-md font-medium"
+                  >
                     details
                   </button>
                 </>
@@ -65,6 +72,8 @@ const ArticleCard = () => {
   );
 };
 
-ArticleCard.propTypes = {};
+ArticleCard.propTypes = {
+  article: PropTypes.object,
+};
 
 export default ArticleCard;

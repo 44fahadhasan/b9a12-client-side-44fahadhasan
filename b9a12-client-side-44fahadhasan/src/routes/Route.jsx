@@ -4,6 +4,7 @@ import ErrorPage from "../pages/commonPages/ErrorPage/ErrorPage";
 // import HomePage from "../pages/mainPages/HomePage/HomePage";
 import AddArticlePage from "../pages/UserPages/AddArticlePage/AddArticlePage";
 import AllArticlesPage from "../pages/UserPages/AllArticlesPage/AllArticlesPage";
+import ArticleDetails from "../pages/UserPages/ArticleDetails/ArticleDetails";
 import MyProfilePage from "../pages/UserPages/MyProfilePage/MyProfilePage";
 import HomeContainer from "../pages/mainPages/HomePage/HomeContainer/HomeContainer";
 import LoginPage from "../pages/mainPages/LoginPage/LoginPage";
@@ -42,6 +43,16 @@ const routes = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AddArticlePage />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "Article-Details/:id",
+        loader: ({ params }) =>
+          fetch(`${import.meta.env.VITE_API_URL}/articles/${params?.id}`),
+        element: (
+          <PrivateRoute>
+            <ArticleDetails />
           </PrivateRoute>
         ),
       },

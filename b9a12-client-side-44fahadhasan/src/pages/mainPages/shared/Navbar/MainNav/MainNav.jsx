@@ -45,7 +45,7 @@ const MainNav = () => {
                     user?.photoURL ||
                     "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
                   }
-                  className={`w-[46px] rounded-full object-cover ${
+                  className={`w-[46px] h-[46px] rounded-full object-cover ${
                     pathname === "/My-Profile"
                       ? "ring-[#FB4C35] ring"
                       : undefined

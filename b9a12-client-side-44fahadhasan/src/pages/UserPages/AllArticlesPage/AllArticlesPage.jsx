@@ -1,27 +1,39 @@
+import { useQuery } from "@tanstack/react-query";
 import { FiSearch } from "react-icons/fi";
 import ContainerBox from "../../../components/ContainerBox/ContainerBox";
 import FilterDropdown from "../../../components/FilterDropdown/FilterDropdown";
 import SectionContent from "../../../components/SectionContent/SectionContent";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import ArticleCard from "./ArticleCard/ArticleCard";
 
+const publisher = [
+  { name: "one" },
+  { name: "two" },
+  { name: "three" },
+  { name: "four" },
+  { name: "five" },
+];
+
+const tag = [
+  { name: "one" },
+  { name: "two" },
+  { name: "three" },
+  { name: "four" },
+  { name: "five" },
+];
+
 const AllArticlesPage = () => {
-  const articles = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+  const axiosPublic = useAxiosPublic();
 
-  const publisher = [
-    { name: "one" },
-    { name: "two" },
-    { name: "three" },
-    { name: "four" },
-    { name: "five" },
-  ];
-  const tag = [
-    { name: "one" },
-    { name: "two" },
-    { name: "three" },
-    { name: "four" },
-    { name: "five" },
-  ];
+  const { data: articles = [] } = useQuery({
+    queryKey: ["articles"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/articles");
+      return res?.data;
+    },
+  });
 
+  //
   return (
     <div className="bg-[#E6E7E8] font-[sans-serif]">
       <ContainerBox>
