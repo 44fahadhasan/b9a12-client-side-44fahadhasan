@@ -8,7 +8,6 @@ import {
   MdOutlinePublishedWithChanges,
 } from "react-icons/md";
 import { RiArticleFill, RiLogoutBoxFill } from "react-icons/ri";
-
 import { NavLink } from "react-router-dom";
 import SiteLogo from "../../../../components/SiteLogo/SiteLogo";
 import useLogout from "../../../../hooks/useLogout";
@@ -19,7 +18,7 @@ const DashboardNavbar = ({ isOpen, setIsOpen }) => {
   return (
     <>
       <Drawer
-        className="bg-[#212121] w-[288px]"
+        className="bg-[#212121] w-[288px] lg:min-h-[100vh]"
         backdrop={false}
         open={isOpen}
         onClose={() => setIsOpen(false)}

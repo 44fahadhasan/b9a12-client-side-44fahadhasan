@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { FiSearch } from "react-icons/fi";
 import ContainerBox from "../../../components/ContainerBox/ContainerBox";
 import FilterDropdown from "../../../components/FilterDropdown/FilterDropdown";
+import LoadingSpiinner from "../../../components/LoadingSpiinner/LoadingSpiinner";
 import SectionContent from "../../../components/SectionContent/SectionContent";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import usePublisher from "../../../hooks/usePublisher";
@@ -22,17 +23,18 @@ const tag = [
 const AllArticlesPage = () => {
   const axiosPublic = useAxiosPublic();
 
-  const { data: articles = [] } = useQuery({
-    queryKey: ["articles"],
+  const { data: approvedArticles = [] } = useQuery({
+    queryKey: ["approvedArticles"],
     queryFn: async () => {
-      const res = await axiosPublic.get("/articles");
+      const res = await axiosPublic.get("/approved-articles");
       return res?.data;
     },
   });
 
   const { publishers } = usePublisher();
 
-  //
+  if (!approvedArticles.length) return <LoadingSpiinner />;
+
   return (
     <div className="bg-[#E6E7E8] font-[sans-serif]">
       <ContainerBox>
@@ -91,8 +93,8 @@ const AllArticlesPage = () => {
           {/* card container */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-16  mx-auto">
             {/* single card */}
-            {articles?.map((article, idx) => (
-              <ArticleCard key={idx} article={article} />
+            {approvedArticles?.map((approvedArticle, idx) => (
+              <ArticleCard key={idx} approvedArticle={approvedArticle} />
             ))}
           </div>
         </div>

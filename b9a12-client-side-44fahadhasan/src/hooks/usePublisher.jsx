@@ -1,13 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "./useAxiosSecure";
+import useAxiosPublic from "./useAxiosPublic";
 
 const usePublisher = () => {
-  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
 
   const { data: publishers = [] } = useQuery({
     queryKey: ["publishers"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/publishers");
+      const res = await axiosPublic.get("/publishers");
       return res?.data;
     },
   });

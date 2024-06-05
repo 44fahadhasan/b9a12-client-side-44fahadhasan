@@ -2,10 +2,10 @@ import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
 
-const ArticleCard = ({ article }) => {
+const ArticleCard = ({ approvedArticle }) => {
   const isPremiun = !true;
 
-  const { _id, title, image, publisher, description } = article || {};
+  const { _id, title, image, publisher, description } = approvedArticle || {};
 
   const navigate = useNavigate();
 
@@ -72,7 +72,7 @@ const ArticleCard = ({ article }) => {
 };
 
 ArticleCard.propTypes = {
-  article: PropTypes.object,
+  approvedArticle: PropTypes.object,
 };
 
 export default ArticleCard;

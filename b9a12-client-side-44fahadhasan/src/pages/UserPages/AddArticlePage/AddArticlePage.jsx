@@ -14,6 +14,7 @@ import Swal from "sweetalert2";
 import ContainerBox from "../../../components/ContainerBox/ContainerBox";
 import LoadingButtion from "../../../components/LoadingButtion/LoadingButtion";
 import SectionContent from "../../../components/SectionContent/SectionContent";
+import useAuth from "../../../hooks/useAuth";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import usePublisher from "../../../hooks/usePublisher";
 import imgFileToUrl from "../../../utils/urlConverter";
@@ -36,6 +37,14 @@ const AddArticlePage = () => {
 
   const [selectTag, setSelectTag] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const { user } = useAuth();
+
+  const author = {
+    name: user?.displayName,
+    email: user?.email,
+    image: user?.photoURL,
+  };
 
   const axiosPublic = useAxiosPublic();
 
@@ -76,6 +85,7 @@ const AddArticlePage = () => {
         publisher,
         description,
         tag,
+        author,
       };
 
       axiosPublic
