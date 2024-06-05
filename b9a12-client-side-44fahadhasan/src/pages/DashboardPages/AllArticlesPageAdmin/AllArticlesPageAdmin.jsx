@@ -31,7 +31,6 @@ const AllArticlesPageAdmin = () => {
         axiosSecure
           .put(`/articles/${id}`)
           .then((res) => {
-            console.log(res.data);
             if (res.data.modifiedCount === 1) {
               Swal.fire({
                 title: "Premium!",

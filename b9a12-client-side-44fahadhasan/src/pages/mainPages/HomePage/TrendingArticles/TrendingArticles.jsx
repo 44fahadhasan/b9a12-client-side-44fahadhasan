@@ -1,14 +1,24 @@
+import { useQuery } from "@tanstack/react-query";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ContainerBox from "../../../../components/ContainerBox/ContainerBox";
 import SectionContent from "../../../../components/SectionContent/SectionContent";
+import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 import TrendingArticlesCard from "./TrendingArticlesCard/TrendingArticlesCard";
 
-const trendingArticles = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
-
 const TrendingArticles = () => {
+  const axiosPublic = useAxiosPublic();
+
+  const { data: trendingArticles = [] } = useQuery({
+    queryKey: ["trendingArticles"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/trending-articles");
+      return res?.data;
+    },
+  });
+
   return (
     <div>
       <ContainerBox>
@@ -87,9 +97,9 @@ const TrendingArticles = () => {
           modules={[Pagination, Navigation]}
           className="mySwiper"
         >
-          {trendingArticles?.map((data, idx) => (
-            <SwiperSlide key={idx}>
-              <TrendingArticlesCard />
+          {trendingArticles?.map((trendingArticle) => (
+            <SwiperSlide key={trendingArticle?._id}>
+              <TrendingArticlesCard trendingArticle={trendingArticle} />
             </SwiperSlide>
           ))}
         </Swiper>

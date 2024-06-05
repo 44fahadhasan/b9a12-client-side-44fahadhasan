@@ -1,7 +1,20 @@
+import { useQuery } from "@tanstack/react-query";
+import CountUp from "react-countup";
 import ContainerBox from "../../../../components/ContainerBox/ContainerBox";
 import SectionContent from "../../../../components/SectionContent/SectionContent";
+import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 
 const UsersStatistics = () => {
+  const axiosPublic = useAxiosPublic();
+
+  const { data } = useQuery({
+    queryKey: ["userStatistics"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/user-statistics");
+      return res?.data;
+    },
+  });
+
   return (
     <section>
       <ContainerBox>
@@ -21,7 +34,7 @@ const UsersStatistics = () => {
                       All Users
                     </dt>
                     <dd className="order-1 text-5xl font-extrabold text-gray-700">
-                      0+
+                      <CountUp end={data?.allUser} duration={3} />+
                     </dd>
                   </div>
                   <div className="flex flex-col border-t border-b border-gray-100 p-6 text-center sm:border-0 sm:border-l sm:border-r">
@@ -29,7 +42,7 @@ const UsersStatistics = () => {
                       Normal Users
                     </dt>
                     <dd className="order-1 text-5xl font-extrabold text-gray-700">
-                      0+
+                      <CountUp end={data?.normalUser} duration={3} />+
                     </dd>
                   </div>
                   <div className="flex flex-col border-t border-gray-100 p-6 text-center sm:border-0 sm:border-l">
@@ -37,7 +50,7 @@ const UsersStatistics = () => {
                       Premium Users
                     </dt>
                     <dd className="order-1 text-5xl font-extrabold text-gray-700">
-                      0+
+                      <CountUp end={data?.premiumUser} duration={3} />+
                     </dd>
                   </div>
                 </dl>

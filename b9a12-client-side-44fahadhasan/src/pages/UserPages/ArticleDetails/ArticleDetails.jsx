@@ -1,9 +1,22 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import ContainerBox from "../../../components/ContainerBox/ContainerBox";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 const ArticleDetails = () => {
   const { id } = useParams();
 
+  const axiosPublic = useAxiosPublic();
+
+  axiosPublic
+    .put(`/article-count/${id}`, { count: 1 })
+    .then((res) => {
+      console.log(res.data);
+    })
+    .catch((error) => {
+      console.log(error?.message);
+    });
+
+  //..
   const { title, time, image, publisher, description, tag } =
     useLoaderData() || {};
 

@@ -3,16 +3,15 @@ import { useNavigate } from "react-router-dom";
 import "./style.css";
 
 const ArticleCard = ({ approvedArticle }) => {
-  const isPremiun = !true;
-
-  const { _id, title, image, publisher, description } = approvedArticle || {};
+  const { _id, title, image, publisher, description, isPremium } =
+    approvedArticle || {};
 
   const navigate = useNavigate();
 
   return (
     <div
       className={`bg-white grid sm:grid-cols-1 hover:shadow-xl shadow-[0_2px_18px_-6px_rgba(0,0,0,0.2)] w-full max-w-xl  font-[sans-serif] mx-auto mt-4 transform  transition-transform duration-300  rounded-md ${
-        isPremiun ? "premium_card hover:scale-105" : undefined
+        isPremium ? "premium_card hover:scale-105" : undefined
       }`}
     >
       <img
@@ -26,7 +25,7 @@ const ArticleCard = ({ approvedArticle }) => {
       <div className="group overflow-hidden">
         <div
           className={`before:duration-700 before:absolute before:border-[#FB4C35] before:w-28 before:h-28 before:bg-transparent before:blur-none  before:opacity-50 before:rounded-full before:-left-4 before:-top-12 flex flex-col justify-between relative z-10 group-hover:before:top-28 group-hover:before:left-44 group-hover:before:scale-125 group-hover:before:blur ${
-            isPremiun ? "before:border-8" : undefined
+            isPremium ? "before:border-8" : undefined
           }`}
         >
           <div className="px-4 py-6 z-10">
@@ -41,28 +40,16 @@ const ArticleCard = ({ approvedArticle }) => {
               <div className="ml-1 flex-1">
                 <p className="text-sm text-black font-semibold">{publisher}</p>
               </div>
-              {isPremiun ? (
-                <>
-                  <button
-                    onClick={() => navigate(`/Article-Details/${_id}`)}
-                    disabled={!isPremiun}
-                    className={`${
-                      isPremiun ? "bg-[#F94B35]" : "bg-[#444444ca]"
-                    } text-white inline-block text-center px-2 py-1 rounded text-md font-medium `}
-                  >
-                    details
-                  </button>
-                </>
-              ) : (
-                <>
-                  <button
-                    onClick={() => navigate(`/Article-Details/${_id}`)}
-                    className="bg-[#F94B35] text-white inline-block text-center px-2 py-1 rounded text-md font-medium"
-                  >
-                    details
-                  </button>
-                </>
-              )}
+
+              <button
+                onClick={() => navigate(`/Article-Details/${_id}`)}
+                disabled={isPremium}
+                className={`${
+                  isPremium ? "bg-[#444444ca]" : "bg-[#F94B35]"
+                } text-white inline-block text-center px-2 py-1 rounded text-md font-medium `}
+              >
+                details
+              </button>
             </div>
           </div>
         </div>

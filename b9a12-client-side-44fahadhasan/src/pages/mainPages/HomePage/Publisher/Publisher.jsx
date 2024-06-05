@@ -1,9 +1,10 @@
 import ContainerBox from "../../../../components/ContainerBox/ContainerBox";
 import SectionContent from "../../../../components/SectionContent/SectionContent";
-
-const publishers = [1, 2, 3, 4, 5, 6, 7, 8];
+import usePublisher from "../../../../hooks/usePublisher";
 
 const Publisher = () => {
+  const { publishers } = usePublisher();
+
   return (
     <div className="bg-[#F3F4F6]">
       <ContainerBox>
@@ -14,21 +15,21 @@ const Publisher = () => {
 
           <div className="flex flex-wrap justify-center mx-auto lg:w-full md:w-5/6 xl:shadow-small-blue">
             {publishers?.map((publisher, idx) => (
-              <a
+              <div
                 key={idx}
-                className="block w-1/2 py-10 text-center border lg:w-1/4 bg-white"
+                className="m-2 group px-10 py-5 bg-white/10 rounded-lg flex flex-col items-center justify-center gap-2 relative after:absolute after:h-full after:bg-[#212121] z-20 shadow-lg after:-z-20 after:w-full after:inset-0 after:rounded-lg transition-all duration-300 hover:transition-all hover:duration-300 after:transition-all after:duration-500 after:hover:transition-all after:hover:duration-500 overflow-hidden  after:-translate-y-full after:hover:translate-y-0 [&amp;_p]:delay-200 [&amp;_p]:transition-all"
               >
-                <div>
+                <span className="w-36 card1img aspect-square text-[#212121] group-hover:bg-[#FB4C35] text-5xl rounded-full p-1 transition-all duration-300 group-hover:transition-all group-hover:duration-300 group-hover:-translate-y-2 mx-auto">
                   <img
-                    src="https://redpixelthemes.com/assets/images/icon-portfolio-green.svg"
-                    className="block mx-auto"
+                    src={publisher?.image}
+                    className="w-full h-full rounded-full object-cover"
                   />
+                </span>
 
-                  <p className="pt-4 text-sm font-medium capitalize font-body text-green-900 lg:text-lg md:text-base md:pt-6">
-                    portfolio
-                  </p>
-                </div>
-              </a>
+                <p className="font-semibold text-[#111827] tracking-wider group-hover:text-[#FB4C35] text-xl">
+                  {publisher?.name}
+                </p>
+              </div>
             ))}
           </div>
         </div>
