@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import LoadingButtion from "../../../components/LoadingButtion/LoadingButtion";
 import SiteLogo from "../../../components/SiteLogo/SiteLogo";
 import useAuth from "../../../hooks/useAuth";
+import useCreateNewUser from "../../../hooks/useCreateNewUser";
 import imgFileToUrl from "../../../utils/urlConverter";
 
 const RegisterPage = () => {
@@ -12,6 +13,8 @@ const RegisterPage = () => {
   const [loading, setLoading] = useState(false);
 
   const { createUserEmailAndPassword, updateUserProfile } = useAuth();
+
+  const newUserSaveInDb = useCreateNewUser;
 
   // react hook from
   const {
@@ -42,10 +45,22 @@ const RegisterPage = () => {
       createUserEmailAndPassword(email, password)
         .then(() => {
           // user profile info
-          updateUserProfile(fullName, imageUrl);
-          toast.success("Created an new account successfully");
-          setLoading(false);
-          navigate(from, { replace: true });
+          updateUserProfile(fullName, imageUrl).then(() => {
+            // Profile updated
+
+            // new user data save to database start
+            const userData = {
+              email,
+              name: fullName,
+              image: imageUrl,
+            };
+            newUserSaveInDb(userData);
+            // new user data save to database end
+
+            toast.success("Created an new account successfully");
+            setLoading(false);
+            navigate(from, { replace: true });
+          });
         })
         .catch((error) => {
           toast.error(error?.message);

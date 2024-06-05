@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import LoadingButtion from "../../../components/LoadingButtion/LoadingButtion";
 import useAuth from "../../../hooks/useAuth";
+import useCreateNewUser from "../../../hooks/useCreateNewUser";
 
 const LoginPage = () => {
   const [togglePassword, setTogglePassword] = useState(true);
@@ -14,6 +15,8 @@ const LoginPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
+
+  const newUserSaveInDb = useCreateNewUser;
 
   const {
     register,
@@ -52,7 +55,18 @@ const LoginPage = () => {
   // handle google login
   const handleGoogleLogin = () => {
     loginWithGoogle()
-      .then(() => {
+      .then((res) => {
+        // new user data save to database start
+        if (res?.user) {
+          const userData = {
+            email: res?.user?.email,
+            name: res?.user?.displayName,
+            image: res?.user?.photoURL,
+          };
+          newUserSaveInDb(userData);
+        }
+        // new user data save to database end
+
         toast.success("Login successful by google account");
         setLoading(false);
         navigate(from, { replace: true });
