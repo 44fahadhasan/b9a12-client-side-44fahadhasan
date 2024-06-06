@@ -1,14 +1,12 @@
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import useLogout from "./useLogout";
 
 const axiosSecure = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
 });
 
 const useAxiosSecure = () => {
-  const navigate = useNavigate();
-  const { handleLogOut } = useLogout();
+  // const navigate = useNavigate();
+  // const { handleLogOut } = useLogout();
 
   // Add a request interceptor
 
@@ -34,8 +32,8 @@ const useAxiosSecure = () => {
       const errorStatus = error?.response?.status;
 
       if (errorStatus === 401 || errorStatus === 403) {
-        handleLogOut();
-        navigate("/Login");
+        // handleLogOut();
+        // navigate("/Login");
       }
     }
   );

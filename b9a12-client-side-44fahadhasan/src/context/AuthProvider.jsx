@@ -18,16 +18,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  console.log("AuthProvider console =>", user);
-
   const axiosPublic = useAxiosPublic();
-
-  useEffect(() => {
-    const unSubscribe = loggedUserObserver;
-
-    // clear observer firebase mathod
-    return () => unSubscribe();
-  }, [loggedUserObserver]);
 
   const googleProvider = new GoogleAuthProvider();
 
@@ -63,8 +54,8 @@ const AuthProvider = ({ children }) => {
   };
 
   // Get the currently login user data (observer)
-  var loggedUserObserver = () => {
-    onAuthStateChanged(auth, (currentUser) => {
+  useEffect(() => {
+    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
         // User is login
         setUser(currentUser);
@@ -91,7 +82,10 @@ const AuthProvider = ({ children }) => {
         // logout end
       }
     });
-  };
+
+    // clear observer firebase mathod
+    return () => unSubscribe();
+  }, [axiosPublic]);
 
   // user authentication data
   const authData = {

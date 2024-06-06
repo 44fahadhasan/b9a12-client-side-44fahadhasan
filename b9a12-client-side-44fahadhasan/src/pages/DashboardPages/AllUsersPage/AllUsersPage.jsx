@@ -2,12 +2,17 @@ import { useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import ContainerBox from "../../../components/ContainerBox/ContainerBox";
+import LoadingButtion from "../../../components/LoadingButtion/LoadingButtion";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const AllUsersPage = () => {
   const axiosSecure = useAxiosSecure();
 
-  const { data: users = [], refetch } = useQuery({
+  const {
+    data: users = [],
+    refetch,
+    isRefetching,
+  } = useQuery({
     queryKey: ["users-admin"],
     queryFn: async () => {
       const res = await axiosSecure.get("/users-admin");
@@ -94,7 +99,7 @@ const AllUsersPage = () => {
 
                   <td className="p-4">
                     {user?.role === "Admin" ? (
-                      "Admin"
+                      (isRefetching && <LoadingButtion />) || "Admin"
                     ) : (
                       <button
                         onClick={() => handleAdmin(user?._id)}

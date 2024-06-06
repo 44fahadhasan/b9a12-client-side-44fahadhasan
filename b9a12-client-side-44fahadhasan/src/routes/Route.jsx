@@ -1,8 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
-import MainLayout from "../layouts/MainLayout";
-import ErrorPage from "../pages/commonPages/ErrorPage/ErrorPage";
-// import HomePage from "../pages/mainPages/HomePage/HomePage";
 import Dashboard from "../layouts/Dashboard";
+import MainLayout from "../layouts/MainLayout";
 import AddPublisherPage from "../pages/DashboardPages/AddPublisherPage/AddPublisherPage";
 import AllArticlesPageAdmin from "../pages/DashboardPages/AllArticlesPageAdmin/AllArticlesPageAdmin";
 import AllUsersPage from "../pages/DashboardPages/AllUsersPage/AllUsersPage";
@@ -10,10 +8,16 @@ import DashboardPage from "../pages/DashboardPages/DashboardPage/DashboardPage";
 import AddArticlePage from "../pages/UserPages/AddArticlePage/AddArticlePage";
 import AllArticlesPage from "../pages/UserPages/AllArticlesPage/AllArticlesPage";
 import ArticleDetails from "../pages/UserPages/ArticleDetails/ArticleDetails";
+import MyArticlesPage from "../pages/UserPages/MyArticlesPage/MyArticlesPage";
 import MyProfilePage from "../pages/UserPages/MyProfilePage/MyProfilePage";
+import PremiumArticles from "../pages/UserPages/PremiumArticles/PremiumArticles";
+import SubscriptionPage from "../pages/UserPages/SubscriptionPage/SubscriptionPage";
+import ErrorPage from "../pages/commonPages/ErrorPage/ErrorPage";
 import HomeContainer from "../pages/mainPages/HomePage/HomeContainer/HomeContainer";
 import LoginPage from "../pages/mainPages/LoginPage/LoginPage";
 import RegisterPage from "../pages/mainPages/RegisterPage/RegisterPage";
+import AdminRoute from "./AdminRoute";
+import PremiumRoute from "./PremiumRoute";
 import PrivateRoute from "./PrivateRoute";
 
 const routes = createBrowserRouter([
@@ -24,6 +28,7 @@ const routes = createBrowserRouter([
     errorElement: <ErrorPage />,
 
     children: [
+      // user public routes
       {
         index: true,
         element: <HomeContainer />,
@@ -36,8 +41,6 @@ const routes = createBrowserRouter([
         path: "Register",
         element: <RegisterPage />,
       },
-
-      // user public routes
       {
         path: "All-Articles",
         element: <AllArticlesPage />,
@@ -49,6 +52,22 @@ const routes = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AddArticlePage />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "Subscription",
+        element: (
+          <PrivateRoute>
+            <SubscriptionPage />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "My-Articles",
+        element: (
+          <PrivateRoute>
+            <MyArticlesPage />
           </PrivateRoute>
         ),
       },
@@ -70,30 +89,65 @@ const routes = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+
+      // premium user route
+      {
+        path: "Premium-Articles",
+        element: (
+          <PrivateRoute>
+            <PremiumRoute>
+              <PremiumArticles />
+            </PremiumRoute>
+          </PrivateRoute>
+        ),
+      },
     ],
   },
 
   // dashboard layout routes
-
   {
     path: "Dashboard",
     element: <Dashboard />,
     children: [
       {
         index: true,
-        element: <DashboardPage />,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <DashboardPage />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "All-Users",
-        element: <AllUsersPage />,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <AllUsersPage />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "All-Articles",
-        element: <AllArticlesPageAdmin />,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <AllArticlesPageAdmin />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "Add-Publisher",
-        element: <AddPublisherPage />,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <AddPublisherPage />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
     ],
   },

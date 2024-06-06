@@ -5,8 +5,10 @@ import useLogout from "../../hooks/useLogout";
 import SiteLogo from "../SiteLogo/SiteLogo";
 
 const MenuListItems = ({ setToggleMenu }) => {
-  const admin = !true;
-  const premium = !true;
+  const { admin: isAdmin, premiumUser: isPremiumUser } = useLogout();
+
+  const admin = isAdmin;
+  const premium = isPremiumUser;
 
   // menu lists
   const ListItems = [
@@ -15,30 +17,30 @@ const MenuListItems = ({ setToggleMenu }) => {
       path: "/",
     },
     {
-      name: "Add Articles",
-      path: "Add-Articles",
-    },
-    {
       name: "All Articles",
       path: "All-Articles",
+    },
+    {
+      isPremium: premium,
+      name: "Premium Articles",
+      path: "Premium-Articles",
     },
     {
       name: "Subscription",
       path: "Subscription",
     },
     {
-      isAdmin: admin,
-      name: "Dashboard",
-      path: "Dashboard",
-    },
-    {
       name: "My Articles",
       path: "My-Articles",
     },
     {
-      isPremium: premium,
-      name: "Premium Articles",
-      path: "Premium-Articles",
+      name: "Add Articles",
+      path: "Add-Articles",
+    },
+    {
+      isAdmin: admin,
+      name: "Dashboard",
+      path: "Dashboard",
     },
   ];
 

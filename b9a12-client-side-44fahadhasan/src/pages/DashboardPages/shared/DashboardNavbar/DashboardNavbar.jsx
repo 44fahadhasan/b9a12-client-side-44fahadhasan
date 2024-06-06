@@ -99,7 +99,7 @@ const DashboardNavbar = ({ isOpen, setIsOpen }) => {
                       <Sidebar.Item
                         onClick={handleLogOut}
                         icon={RiLogoutBoxFill}
-                        className="text-white hover:text-[#111827]"
+                        className="text-white cursor-pointer hover:text-[#111827]"
                       >
                         Logout
                       </Sidebar.Item>

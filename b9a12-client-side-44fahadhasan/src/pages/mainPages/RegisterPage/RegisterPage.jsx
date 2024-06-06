@@ -60,18 +60,18 @@ const RegisterPage = () => {
             toast.success("Created an new account successfully");
             setLoading(false);
             navigate(from, { replace: true });
+
+            // clear input
+            resetField("fullName");
+            resetField("email");
+            resetField("image");
+            resetField("password");
           });
         })
         .catch((error) => {
           toast.error(error?.message);
           setLoading(false);
         });
-
-      // clear input
-      resetField("fullName");
-      resetField("email");
-      resetField("image");
-      resetField("password");
     } catch (error) {
       toast.error(error?.message);
       setLoading(false);

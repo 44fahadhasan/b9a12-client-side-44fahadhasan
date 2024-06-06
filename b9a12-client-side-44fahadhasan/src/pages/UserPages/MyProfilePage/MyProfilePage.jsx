@@ -1,15 +1,17 @@
-import { useQuery } from "@tanstack/react-query";
 import { useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { MdOutlineWorkspacePremium } from "react-icons/md";
 import LoadingButtion from "../../../components/LoadingButtion/LoadingButtion";
 import useAuth from "../../../hooks/useAuth";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import useUserInfo from "../../../hooks/useUserInfo";
 import imgFileToUrl from "../../../utils/urlConverter";
 
 const MyProfilePage = () => {
   const [loading, setLoading] = useState(false);
   const [editInput, setEditInput] = useState(true);
+
+  const { activeUserInfo, isLoading } = useUserInfo();
+
   const { user, updateUserProfile } = useAuth();
 
   const textInputRef = useRef(null);
@@ -51,16 +53,6 @@ const MyProfilePage = () => {
     }
   };
 
-  const axiosSecure = useAxiosSecure();
-
-  const { data } = useQuery({
-    queryKey: ["specificUserInfo"],
-    queryFn: async () => {
-      const res = await axiosSecure.get(`/user/${user?.email}`);
-      return res?.data;
-    },
-  });
-
   return (
     <div className="font-sans antialiased text-gray-900 leading-normal tracking-wider bg-cover bg-[url('https://source.unsplash.com/1L71sPT5XKc')]">
       <div className="max-w-4xl flex items-center h-auto flex-wrap mx-auto">
@@ -84,13 +76,20 @@ const MyProfilePage = () => {
             <p className="pt-4 text-base font-bold flex items-center justify-center lg:justify-start text-[#FB4C35]">
               <MdOutlineWorkspacePremium className="text-2xl " />
               Premium :{" "}
-              <span className="text-[#111827] ml-2">
-                {data?.premium ? "Subscribe" : "Unsubscribe"}
-              </span>
+              {(isLoading && <LoadingButtion />) || (
+                <span className="text-[#111827] ml-2">
+                  {activeUserInfo?.premium ? "Subscribe" : "Unsubscribe"}
+                </span>
+              )}
             </p>
             <p className="pt-4 text-base font-bold flex items-center justify-center lg:justify-start text-[#FB4C35]">
               <MdOutlineWorkspacePremium className="text-2xl " />
-              Role : <span className="text-[#111827] ml-2">{data?.role}</span>
+              Role :{" "}
+              {(isLoading && <LoadingButtion />) || (
+                <span className="text-[#111827] ml-2">
+                  {activeUserInfo?.role}
+                </span>
+              )}
             </p>
 
             <div className="pt-12 pb-8">
