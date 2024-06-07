@@ -47,6 +47,36 @@ const AllArticlesPageAdmin = () => {
     });
   };
 
+  const handleDeclined = (id, data) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "This article will be decline",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#212121",
+      cancelButtonColor: "#FB4C35",
+      confirmButtonText: "Yes, Decline it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure
+          .put(`/article-decline/${id}`, data)
+          .then((res) => {
+            if (res.data.modifiedCount === 1) {
+              Swal.fire({
+                title: "Declined!",
+                text: "Articles has been declined",
+                icon: "success",
+              });
+              refetch();
+            }
+          })
+          .catch((error) => {
+            toast.error(error?.message);
+          });
+      }
+    });
+  };
+
   const handleStatus = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -127,6 +157,7 @@ const AllArticlesPageAdmin = () => {
                 handleDelete={handleDelete}
                 handleStatus={handleStatus}
                 handlePremium={handlePremium}
+                handleDeclined={handleDeclined}
               />
             ))}
           </div>

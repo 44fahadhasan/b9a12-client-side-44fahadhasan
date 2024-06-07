@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import LoadingButtion from "../../LoadingButtion/LoadingButtion";
 
-const Modal = ({ setOpenModal, openModal }) => {
+const Modal = ({ setOpenModal, openModal, handleDeclined, id }) => {
   const [loading, setLoading] = useState(false);
 
   // from handler
@@ -11,8 +11,7 @@ const Modal = ({ setOpenModal, openModal }) => {
     e.preventDefault();
     setLoading(true);
     const decline = e.target.decline.value;
-    console.log(decline);
-
+    handleDeclined(id, { declineReason: decline });
     setOpenModal(false);
     setLoading(false);
   };
@@ -59,6 +58,8 @@ const Modal = ({ setOpenModal, openModal }) => {
 Modal.propTypes = {
   openModal: PropTypes.bool,
   setOpenModal: PropTypes.func,
+  id: PropTypes.string,
+  handleDeclined: PropTypes.func,
 };
 
 export default Modal;

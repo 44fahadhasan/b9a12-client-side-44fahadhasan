@@ -8,6 +8,7 @@ const ArticlesCardAdmin = ({
   handleDelete,
   handleStatus,
   handlePremium,
+  handleDeclined,
 }) => {
   //
   const [openModal, setOpenModal] = useState(false);
@@ -26,7 +27,12 @@ const ArticlesCardAdmin = ({
 
   return (
     <>
-      <Modal openModal={openModal} setOpenModal={setOpenModal} />
+      <Modal
+        openModal={openModal}
+        setOpenModal={setOpenModal}
+        handleDeclined={handleDeclined}
+        id={_id}
+      />
 
       <div className="bg-white rounded overflow-hidden shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] relative group">
         <div>
@@ -114,6 +120,7 @@ ArticlesCardAdmin.propTypes = {
   handlePremium: PropTypes.func,
   handleStatus: PropTypes.func,
   handleDelete: PropTypes.func,
+  handleDeclined: PropTypes.func,
 };
 
 export default ArticlesCardAdmin;
