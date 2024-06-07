@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
+import useLogout from "../../../../hooks/useLogout";
 import "./style.css";
 
 const ArticleCard = ({ approvedArticle }) => {
@@ -7,6 +8,8 @@ const ArticleCard = ({ approvedArticle }) => {
     approvedArticle || {};
 
   const navigate = useNavigate();
+
+  const { premiumUser } = useLogout();
 
   return (
     <div
@@ -41,15 +44,35 @@ const ArticleCard = ({ approvedArticle }) => {
                 <p className="text-sm text-black font-semibold">{publisher}</p>
               </div>
 
+              {/* premium button  start */}
+              {(isPremium && !premiumUser && (
+                <button
+                  onClick={() => navigate(`/Article-Details/${_id}`)}
+                  className="text-white inline-block text-center px-2 py-1 rounded text-md font-medium bg-[#F94B35] "
+                >
+                  Details
+                </button>
+              )) ||
+                (isPremium && (
+                  <button
+                    disabled={premiumUser}
+                    className="text-white inline-block text-center px-2 py-1 rounded text-md font-medium bg-[#444444ca] "
+                  >
+                    Details
+                  </button>
+                ))}
+              {/* premium button  end */}
+
+              {/*  normal button start */}
               <button
                 onClick={() => navigate(`/Article-Details/${_id}`)}
-                disabled={isPremium}
-                className={`${
-                  isPremium ? "bg-[#444444ca]" : "bg-[#F94B35]"
-                } text-white inline-block text-center px-2 py-1 rounded text-md font-medium `}
+                className={`text-white inline-block text-center px-2 py-1 rounded text-md font-medium bg-[#F94B35] ${
+                  isPremium ? "hidden" : undefined
+                }`}
               >
-                details
+                Details
               </button>
+              {/* normal button end */}
             </div>
           </div>
         </div>
