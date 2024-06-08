@@ -12,6 +12,7 @@ import MyArticlesPage from "../pages/UserPages/MyArticlesPage/MyArticlesPage";
 import MyProfilePage from "../pages/UserPages/MyProfilePage/MyProfilePage";
 import PremiumArticles from "../pages/UserPages/PremiumArticles/PremiumArticles";
 import SubscriptionPage from "../pages/UserPages/SubscriptionPage/SubscriptionPage";
+import UpdateMyArticle from "../pages/UserPages/UpdateMyArticle/UpdateMyArticle";
 import ErrorPage from "../pages/commonPages/ErrorPage/ErrorPage";
 import HomeContainer from "../pages/mainPages/HomePage/HomeContainer/HomeContainer";
 import LoginPage from "../pages/mainPages/LoginPage/LoginPage";
@@ -68,6 +69,16 @@ const routes = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MyArticlesPage />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "Update-Article/:id",
+        loader: ({ params }) =>
+          fetch(`${import.meta.env.VITE_API_URL}/articles/${params?.id}`),
+        element: (
+          <PrivateRoute>
+            <UpdateMyArticle />
           </PrivateRoute>
         ),
       },
