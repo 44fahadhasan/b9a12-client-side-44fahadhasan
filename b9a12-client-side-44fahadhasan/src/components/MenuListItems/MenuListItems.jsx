@@ -1,12 +1,15 @@
-import PropTypes from "prop-types";
 import { IoClose } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 import useLogout from "../../hooks/useLogout";
 import SiteLogo from "../SiteLogo/SiteLogo";
 
 const MenuListItems = ({ setToggleMenu }) => {
   const { admin: isAdmin, premiumUser: isPremiumUser } = useLogout();
 
+  const { user } = useAuth();
+
+  const registerUser = !user;
   const admin = isAdmin;
   const premium = isPremiumUser;
 
@@ -26,14 +29,17 @@ const MenuListItems = ({ setToggleMenu }) => {
       path: "Premium-Articles",
     },
     {
+      isLogin: registerUser,
       name: "Subscription",
       path: "Subscription",
     },
     {
+      isLogin: registerUser,
       name: "My Articles",
       path: "My-Articles",
     },
     {
+      isLogin: registerUser,
       name: "Add Articles",
       path: "Add-Articles",
     },
@@ -79,6 +85,7 @@ const MenuListItems = ({ setToggleMenu }) => {
         <li
           key={idx}
           className={`${
+            (listItem?.isLogin ? "hidden" : undefined) ||
             (listItem?.isAdmin ? "hidden" : undefined) ||
             (listItem?.isPremium ? "hidden" : undefined)
           } max-xl:border-b max-xl:py-3 max-xl:px-3 relative xl:hover:after:absolute xl:after:bg-white xl:after:w-0 xl:hover:after:w-full xl:hover:after:h-[2px] xl:after:block xl:after:top-6 xl:after:transition-all xl:after:duration-300 text-[15px] text-white`}
@@ -95,10 +102,6 @@ const MenuListItems = ({ setToggleMenu }) => {
       ))}
     </ul>
   );
-};
-
-MenuListItems.propTypes = {
-  setToggleMenu: PropTypes.func,
 };
 
 export default MenuListItems;

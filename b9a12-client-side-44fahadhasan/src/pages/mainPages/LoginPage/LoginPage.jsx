@@ -218,6 +218,7 @@ const LoginPage = () => {
           {/* sign in button */}
           <div className="mt-10">
             <button
+              disabled={loading}
               type="submit"
               className="w-full py-3 px-4 text-sm font-semibold rounded-full bg-[#333] hover:bg-[#FA4B35] text-white focus:outline-none transition-all duration-300"
             >
@@ -239,6 +240,7 @@ const LoginPage = () => {
           {/* google button */}
           <div className="space-x-8 flex justify-center">
             <button
+              disabled={loading}
               onClick={handleGoogleLogin}
               type="button"
               className="border-none outline-none"

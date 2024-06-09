@@ -90,7 +90,10 @@ const ArticlesCardAdmin = ({
 
           {/* all button */}
           <div className="group-hover:block absolute left-3 -top-8 hidden transition-all duration-300 animate-bounce hover:animate-none space-x-1">
-            <button onClick={() => setOpenModal(true)}>
+            <button
+              disabled={status === "declined"}
+              onClick={() => setOpenModal(true)}
+            >
               <CrudButton label={"Decline"} />
             </button>
 
