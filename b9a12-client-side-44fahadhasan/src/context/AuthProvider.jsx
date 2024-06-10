@@ -11,6 +11,7 @@ import PropTypes from "prop-types";
 import { createContext, useEffect, useState } from "react";
 import auth from "../firebase/firebase.config";
 import useAxiosPublic from "../hooks/useAxiosPublic";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 export const AuthContext = createContext(null);
 
@@ -19,6 +20,7 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   const googleProvider = new GoogleAuthProvider();
 
@@ -70,6 +72,19 @@ const AuthProvider = ({ children }) => {
 
           setLoading(false);
         });
+
+        // this code for premium user start
+
+        axiosSecure
+          .post("/premium-check", userInfo)
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+
+        // this code for premium user end
 
         // login end
       } else {
