@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 import PropTypes from "prop-types";
 import { createContext, useEffect, useState } from "react";
+import Swal from "sweetalert2";
 import auth from "../firebase/firebase.config";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import useAxiosSecure from "../hooks/useAxiosSecure";
@@ -78,11 +79,15 @@ const AuthProvider = ({ children }) => {
         axiosSecure
           .post("/premium-check", userInfo)
           .then((res) => {
-            console.log(res);
+            if (res?.data?.acknowledged) {
+              Swal.fire({
+                title: "Unsubscribe!",
+                text: "Subscription Period End",
+                icon: "success",
+              });
+            }
           })
-          .catch((err) => {
-            console.log(err);
-          });
+          .catch(() => {});
 
         // this code for premium user end
 

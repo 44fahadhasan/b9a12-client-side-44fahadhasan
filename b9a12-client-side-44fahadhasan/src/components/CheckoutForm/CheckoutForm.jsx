@@ -83,7 +83,7 @@ const CheckoutForm = ({ subcsubscriptionInfo }) => {
           .patch(`/make-user-premium`, data)
           .then((res) => {
             //
-            if (res.data.acknowledged) {
+            if (res?.data?.acknowledged) {
               Swal.fire({
                 title: "Subscribed!",
                 text: "Subscription Successful",
