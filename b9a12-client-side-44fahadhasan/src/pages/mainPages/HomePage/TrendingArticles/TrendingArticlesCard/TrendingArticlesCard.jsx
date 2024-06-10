@@ -7,7 +7,6 @@ const TrendingArticlesCard = ({ trendingArticle }) => {
 
   const navigate = useNavigate();
 
-  console.log(isPremium);
   const { premiumUser } = useLogout();
 
   return (

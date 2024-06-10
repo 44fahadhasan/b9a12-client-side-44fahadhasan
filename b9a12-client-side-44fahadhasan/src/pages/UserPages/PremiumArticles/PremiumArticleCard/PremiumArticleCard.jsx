@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 const PremiumArticleCard = ({ premiumArticle }) => {
   const { _id, title, image, publisher, description } = premiumArticle || {};
-  console.log("p", _id);
 
   const navigate = useNavigate();
   return (

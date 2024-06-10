@@ -46,7 +46,6 @@ const AllUsersPage = () => {
         axiosSecure
           .patch(`/users-admin/${id}`)
           .then((res) => {
-            console.log(res.data);
             if (res.data.modifiedCount === 1) {
               Swal.fire({
                 title: "Admin!",

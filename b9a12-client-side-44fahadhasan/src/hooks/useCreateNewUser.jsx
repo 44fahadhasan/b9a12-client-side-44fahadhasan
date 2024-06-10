@@ -6,10 +6,8 @@ const useCreateNewUser = (userData) => {
 
   axiosPublic
     .post("/users", userData)
-    .then((data) => {
-      console.log(data.data);
-    })
-    .catch((err) => console.log(err));
+    .then(() => {})
+    .catch(() => {});
 };
 
 export default useCreateNewUser;

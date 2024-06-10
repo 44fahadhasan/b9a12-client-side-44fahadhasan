@@ -12,6 +12,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import ContainerBox from "../../../components/ContainerBox/ContainerBox";
+import LoadingSpiinner from "../../../components/LoadingSpiinner/LoadingSpiinner";
 import SectionContent from "../../../components/SectionContent/SectionContent";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
@@ -26,7 +27,11 @@ const MyArticlesPage = () => {
 
   const { user } = useAuth();
 
-  const { data: myArticles = [], refetch } = useQuery({
+  const {
+    data: myArticles = [],
+    refetch,
+    isLoading,
+  } = useQuery({
     queryKey: ["my-articles", user?.email],
     enabled: !!user?.email,
     queryFn: async () => {
@@ -67,6 +72,8 @@ const MyArticlesPage = () => {
       }
     });
   };
+
+  if (isLoading) return <LoadingSpiinner />;
 
   return (
     <>

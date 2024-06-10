@@ -34,7 +34,7 @@ const DashboardPage = () => {
   // add title of pie chart in array
   pieChartData.unshift(["PublisherName", "CountNumber"]);
 
-  isLoading && <LoadingSpiinner />;
+  if (isLoading) return <LoadingSpiinner />;
 
   return (
     <div>

@@ -106,7 +106,6 @@ const AllArticlesPageAdmin = () => {
         axiosSecure
           .patch(`/articles/${id}`)
           .then((res) => {
-            console.log(res.data);
             if (res.data.modifiedCount === 1) {
               Swal.fire({
                 title: "Approved!",

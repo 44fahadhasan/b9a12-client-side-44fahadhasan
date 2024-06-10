@@ -9,12 +9,8 @@ const ArticleDetails = () => {
 
   axiosPublic
     .put(`/article-count/${id}`, { count: 1 })
-    .then((res) => {
-      console.log(res.data);
-    })
-    .catch((error) => {
-      console.log(error?.message);
-    });
+    .then(() => {})
+    .catch(() => {});
 
   //..
   const { title, time, image, publisher, description, tag } =

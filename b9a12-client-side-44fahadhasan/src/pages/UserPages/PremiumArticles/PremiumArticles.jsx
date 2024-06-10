@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import ContainerBox from "../../../components/ContainerBox/ContainerBox";
+import LoadingSpiinner from "../../../components/LoadingSpiinner/LoadingSpiinner";
 import SectionContent from "../../../components/SectionContent/SectionContent";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
@@ -10,7 +11,7 @@ const PremiumArticles = () => {
 
   const axiosSecure = useAxiosSecure();
 
-  const { data: premiumArticles = [] } = useQuery({
+  const { data: premiumArticles = [], isLoading } = useQuery({
     queryKey: ["premiumArticles"],
     enabled: !!user?.email,
     queryFn: async () => {
@@ -21,8 +22,7 @@ const PremiumArticles = () => {
     },
   });
 
-  console.log(premiumArticles);
-
+  if (isLoading) return <LoadingSpiinner />;
   return (
     <div className="bg-[#E6E7E8] font-[sans-serif]">
       <ContainerBox>
