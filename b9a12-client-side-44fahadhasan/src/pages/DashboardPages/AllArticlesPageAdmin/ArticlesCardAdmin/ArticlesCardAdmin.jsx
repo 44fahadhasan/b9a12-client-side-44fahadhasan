@@ -119,7 +119,7 @@ const ArticlesCardAdmin = ({
 };
 
 ArticlesCardAdmin.propTypes = {
-  article: PropTypes.array,
+  article: PropTypes.object,
   handlePremium: PropTypes.func,
   handleStatus: PropTypes.func,
   handleDelete: PropTypes.func,

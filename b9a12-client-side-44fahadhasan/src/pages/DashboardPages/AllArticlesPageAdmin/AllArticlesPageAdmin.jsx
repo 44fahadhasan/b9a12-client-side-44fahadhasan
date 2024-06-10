@@ -1,5 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
+import InfiniteScroll from "react-infinite-scroll-component";
 import Swal from "sweetalert2";
 import ContainerBox from "../../../components/ContainerBox/ContainerBox";
 import LoadingSpiinner from "../../../components/LoadingSpiinner/LoadingSpiinner";
@@ -9,13 +10,27 @@ import ArticlesCardAdmin from "./ArticlesCardAdmin/ArticlesCardAdmin";
 const AllArticlesPageAdmin = () => {
   const axiosSecure = useAxiosSecure();
 
-  const { data: articles = [], refetch } = useQuery({
-    queryKey: ["articles"],
-    queryFn: async () => {
-      const res = await axiosSecure.get("/articles");
-      return res?.data;
-    },
-  });
+  const { data, refetch, isLoading, fetchNextPage, hasNextPage } =
+    useInfiniteQuery({
+      queryKey: ["articles"],
+      queryFn: async ({ pageParam = 0 }) => {
+        const res = await axiosSecure.get(
+          `/articles?limit=9&offset=${pageParam}`
+        );
+        return { ...res?.data, prevOffset: pageParam };
+      },
+      getNextPageParam: (lastPage) => {
+        const nextOffset = lastPage.prevOffset + 9;
+        if (nextOffset >= lastPage.countArticles) {
+          return undefined;
+        }
+        return nextOffset;
+      },
+    });
+
+  const articles = data?.pages.reduce((acc, page) => {
+    return [...acc, ...page.result];
+  }, []);
 
   const handlePremium = (id) => {
     Swal.fire({
@@ -138,7 +153,7 @@ const AllArticlesPageAdmin = () => {
     });
   };
 
-  if (!articles.length) return <LoadingSpiinner />;
+  if (isLoading) return <LoadingSpiinner />;
 
   return (
     <div>
@@ -149,18 +164,26 @@ const AllArticlesPageAdmin = () => {
               All Articles
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16 max-md:max-w-lg mx-auto">
-            {articles.map((article) => (
-              <ArticlesCardAdmin
-                key={article?._id}
-                article={article}
-                handleDelete={handleDelete}
-                handleStatus={handleStatus}
-                handlePremium={handlePremium}
-                handleDeclined={handleDeclined}
-              />
-            ))}
-          </div>
+
+          <InfiniteScroll
+            dataLength={articles ? articles.length : 0}
+            next={() => fetchNextPage()}
+            hasMore={hasNextPage}
+            loading={<LoadingSpiinner />}
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16 max-md:max-w-lg mx-auto">
+              {articles?.map((article, idx) => (
+                <ArticlesCardAdmin
+                  key={idx}
+                  article={article}
+                  handleDelete={handleDelete}
+                  handleStatus={handleStatus}
+                  handlePremium={handlePremium}
+                  handleDeclined={handleDeclined}
+                />
+              ))}
+            </div>
+          </InfiniteScroll>
         </div>
       </ContainerBox>
     </div>

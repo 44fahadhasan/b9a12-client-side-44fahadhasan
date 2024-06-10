@@ -27,6 +27,7 @@ const tagOptions = [
   { value: "Technology", label: "Technology" },
   { value: "Health", label: "Health" },
   { value: "Sports", label: "Sports" },
+  { value: "Popular", label: "Popular" },
   { value: "Entertainment", label: "Entertainment" },
   { value: "Breaking News", label: "Breaking News" },
   { value: "World News", label: "World News" },

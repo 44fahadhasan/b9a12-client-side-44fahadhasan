@@ -1,13 +1,23 @@
+import { useQuery } from "@tanstack/react-query";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ContainerBox from "../../../../components/ContainerBox/ContainerBox";
+import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 import FeedbackCard from "./FeedbackCard/FeedbackCard";
 
-const trendingArticles = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
-
 const CustomersFeedback = () => {
+  const axiosPublic = useAxiosPublic();
+
+  const { data: feedbacks = [] } = useQuery({
+    queryKey: ["feedback"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/feedbacks");
+      return res?.data;
+    },
+  });
+
   return (
     <section className="">
       <ContainerBox>
@@ -18,7 +28,7 @@ const CustomersFeedback = () => {
                 Testimonial
               </span>
               <h2 className="text-4xl font-bold text-gray-900 leading-[3.25rem] mb-8">
-                23k+ Customers gave their{" "}
+                {feedbacks.length} Customers Gave Their{" "}
                 <span className=" text-transparent bg-clip-text bg-gradient-to-tr from-[#FB4C35] to-[#FB4C35]">
                   Feedback
                 </span>
@@ -86,9 +96,9 @@ const CustomersFeedback = () => {
                 modules={[Navigation]}
                 className="mySwiper"
               >
-                {trendingArticles?.map((data, idx) => (
+                {feedbacks?.map((feedback, idx) => (
                   <SwiperSlide key={idx}>
-                    <FeedbackCard />
+                    <FeedbackCard feedback={feedback} />
                   </SwiperSlide>
                 ))}
               </Swiper>

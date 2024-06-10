@@ -11,6 +11,7 @@ import ArticleDetails from "../pages/UserPages/ArticleDetails/ArticleDetails";
 import MyArticlesPage from "../pages/UserPages/MyArticlesPage/MyArticlesPage";
 import MyProfilePage from "../pages/UserPages/MyProfilePage/MyProfilePage";
 import PremiumArticles from "../pages/UserPages/PremiumArticles/PremiumArticles";
+import PaymentPage from "../pages/UserPages/SubscriptionPage/PaymentPage/PaymentPage";
 import SubscriptionPage from "../pages/UserPages/SubscriptionPage/SubscriptionPage";
 import UpdateMyArticle from "../pages/UserPages/UpdateMyArticle/UpdateMyArticle";
 import ErrorPage from "../pages/commonPages/ErrorPage/ErrorPage";
@@ -97,6 +98,14 @@ const routes = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MyProfilePage />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "Payment",
+        element: (
+          <PrivateRoute>
+            <PaymentPage />
           </PrivateRoute>
         ),
       },

@@ -26,6 +26,7 @@ const tagOptions = [
   { value: "Technology", label: "Technology" },
   { value: "Health", label: "Health" },
   { value: "Sports", label: "Sports" },
+  { value: "Popular", label: "Popular" },
   { value: "Entertainment", label: "Entertainment" },
   { value: "Breaking News", label: "Breaking News" },
   { value: "World News", label: "World News" },
@@ -91,6 +92,10 @@ const AddArticlePage = () => {
       axiosPublic
         .post("/articles", newArticle)
         .then((res) => {
+          if (res?.data?.message) {
+            toast.success(res?.data?.message);
+            setLoading(false);
+          }
           if (res?.data?.acknowledged) {
             Swal.fire({
               title: "Success!",

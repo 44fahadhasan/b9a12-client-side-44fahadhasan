@@ -1,10 +1,11 @@
-import { Button } from "flowbite-react";
 import { useEffect, useState } from "react";
+import { IoClose } from "react-icons/io5";
+import { MdOutlineMenuOpen } from "react-icons/md";
 import { Outlet, useLocation } from "react-router-dom";
 import DashboardNavbar from "../pages/DashboardPages/shared/DashboardNavbar/DashboardNavbar";
 
 const Dashboard = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const location = useLocation();
   useEffect(() => {
@@ -18,14 +19,17 @@ const Dashboard = () => {
   }, [location]);
 
   return (
-    <main className="flex max-lg:flex-col">
+    <main className="flex max-lg:flex-col lg:min-h-[100vh]">
       {/* sidebar */}
-      <section className="bg-[#212121] lg:basis-[288px]">
+      <section className="bg-[#212121]">
         {/* hiddden button */}
-        <div className="flex min-h-[55px] lg:min-h-[100vh] items-center justify-center ">
-          <Button onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? "Hidden Navigation" : "Show Navigation"}
-          </Button>
+        <div className="flex min-h-[55px] lg:min-h-[100vh] items-center justify-end mr-4 lg:fixed bg-[#212121] lg:pr-2">
+          <button
+            className="text-4xl text-white"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <IoClose /> : <MdOutlineMenuOpen />}
+          </button>
         </div>
 
         <DashboardNavbar isOpen={isOpen} setIsOpen={setIsOpen} />
