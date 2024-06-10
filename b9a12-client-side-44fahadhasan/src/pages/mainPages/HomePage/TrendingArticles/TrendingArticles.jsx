@@ -4,6 +4,7 @@ import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ContainerBox from "../../../../components/ContainerBox/ContainerBox";
+import LoadingSpiinner from "../../../../components/LoadingSpiinner/LoadingSpiinner";
 import SectionContent from "../../../../components/SectionContent/SectionContent";
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 import TrendingArticlesCard from "./TrendingArticlesCard/TrendingArticlesCard";
@@ -11,13 +12,15 @@ import TrendingArticlesCard from "./TrendingArticlesCard/TrendingArticlesCard";
 const TrendingArticles = () => {
   const axiosPublic = useAxiosPublic();
 
-  const { data: trendingArticles = [] } = useQuery({
+  const { data: trendingArticles = [], isLoading } = useQuery({
     queryKey: ["trendingArticles"],
     queryFn: async () => {
       const res = await axiosPublic.get("/trending-articles");
       return res?.data;
     },
   });
+
+  if (isLoading) return <LoadingSpiinner />;
 
   return (
     <div>

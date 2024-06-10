@@ -4,19 +4,22 @@ import "swiper/css/pagination";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ContainerBox from "../../../../components/ContainerBox/ContainerBox";
+import LoadingSpiinner from "../../../../components/LoadingSpiinner/LoadingSpiinner";
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 import FeedbackCard from "./FeedbackCard/FeedbackCard";
 
 const CustomersFeedback = () => {
   const axiosPublic = useAxiosPublic();
 
-  const { data: feedbacks = [] } = useQuery({
+  const { data: feedbacks = [], isLoading } = useQuery({
     queryKey: ["feedback"],
     queryFn: async () => {
       const res = await axiosPublic.get("/feedbacks");
       return res?.data;
     },
   });
+
+  if (isLoading) return <LoadingSpiinner />;
 
   return (
     <section className="">

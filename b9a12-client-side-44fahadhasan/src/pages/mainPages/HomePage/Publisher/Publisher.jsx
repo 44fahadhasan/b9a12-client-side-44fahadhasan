@@ -1,9 +1,12 @@
 import ContainerBox from "../../../../components/ContainerBox/ContainerBox";
+import LoadingSpiinner from "../../../../components/LoadingSpiinner/LoadingSpiinner";
 import SectionContent from "../../../../components/SectionContent/SectionContent";
 import usePublisher from "../../../../hooks/usePublisher";
 
 const Publisher = () => {
-  const { publishers } = usePublisher();
+  const { publishers, isLoading } = usePublisher();
+
+  if (isLoading) return <LoadingSpiinner />;
 
   return (
     <div className="bg-[#F3F4F6]">

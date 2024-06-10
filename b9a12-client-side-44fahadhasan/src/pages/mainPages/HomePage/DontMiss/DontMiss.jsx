@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate } from "react-router-dom";
 import ContainerBox from "../../../../components/ContainerBox/ContainerBox";
+import LoadingSpiinner from "../../../../components/LoadingSpiinner/LoadingSpiinner";
 import SectionContent from "../../../../components/SectionContent/SectionContent";
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 
@@ -8,13 +9,15 @@ const DontMiss = () => {
   const navigate = useNavigate();
   const axiosPublic = useAxiosPublic();
 
-  const { data: recentArticles = [] } = useQuery({
+  const { data: recentArticles = [], isLoading } = useQuery({
     queryKey: ["recentArticles"],
     queryFn: async () => {
       const res = await axiosPublic.get("/recent-articles");
       return res?.data;
     },
   });
+
+  if (isLoading) return <LoadingSpiinner />;
 
   return (
     <ContainerBox>

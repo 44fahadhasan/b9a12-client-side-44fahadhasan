@@ -4,7 +4,7 @@ import useAxiosPublic from "./useAxiosPublic";
 const usePublisher = () => {
   const axiosPublic = useAxiosPublic();
 
-  const { data: publishers = [] } = useQuery({
+  const { data: publishers = [], isLoading } = useQuery({
     queryKey: ["publishers"],
     queryFn: async () => {
       const res = await axiosPublic.get("/publishers");
@@ -12,7 +12,7 @@ const usePublisher = () => {
     },
   });
 
-  return { publishers };
+  return { publishers, isLoading };
 };
 
 export default usePublisher;

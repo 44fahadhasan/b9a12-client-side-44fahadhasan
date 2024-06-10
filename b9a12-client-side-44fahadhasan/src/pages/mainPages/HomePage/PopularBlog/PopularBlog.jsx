@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate } from "react-router-dom";
 import ContainerBox from "../../../../components/ContainerBox/ContainerBox";
+import LoadingSpiinner from "../../../../components/LoadingSpiinner/LoadingSpiinner";
 import SectionContent from "../../../../components/SectionContent/SectionContent";
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 
@@ -8,7 +9,7 @@ const PopularBlog = () => {
   const navigate = useNavigate();
   const axiosPublic = useAxiosPublic();
 
-  const { data: popularArticles = [] } = useQuery({
+  const { data: popularArticles = [], isLoading } = useQuery({
     queryKey: ["popularArticles"],
     queryFn: async () => {
       const res = await axiosPublic.get("/popular-articles");
@@ -19,6 +20,7 @@ const PopularBlog = () => {
   const blogOne = popularArticles[0];
   const blogTwo = popularArticles[1];
 
+  if (isLoading) return <LoadingSpiinner />;
   return (
     <div className="bg-[#F3F4F6]">
       <ContainerBox>

@@ -1,19 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
 import CountUp from "react-countup";
 import ContainerBox from "../../../../components/ContainerBox/ContainerBox";
+import LoadingSpiinner from "../../../../components/LoadingSpiinner/LoadingSpiinner";
 import SectionContent from "../../../../components/SectionContent/SectionContent";
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 
 const UsersStatistics = () => {
   const axiosPublic = useAxiosPublic();
 
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["userStatistics"],
     queryFn: async () => {
       const res = await axiosPublic.get("/user-statistics");
       return res?.data;
     },
   });
+
+  if (isLoading) return <LoadingSpiinner />;
 
   return (
     <section>
