@@ -14,7 +14,7 @@ const SubscriptionModal = ({ isOpen, setIsOpen }) => {
 
   return (
     <>
-      <Transition appear show={isOpen}>
+      <Transition appear show={isOpen} className="z-[1000]">
         <Dialog
           as="div"
           className="relative z-10 focus:outline-none"
