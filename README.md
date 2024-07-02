@@ -3,7 +3,7 @@
 ## overview
 The newspaper website project provides a platform catering to both normal and premium users, offering access to a variety of news articles. Users can subscribe to premium content using integrated payment methods. The admin dashboard facilitates user and content management, ensuring smooth operation and engagement.
 
-## Feature
+## Key Features
 
 ## User Roles
 - Normal Users: Access to free news content.
