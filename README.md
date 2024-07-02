@@ -17,16 +17,10 @@ The newspaper website project provides a platform catering to both normal and pr
 - Provides functionalities for managing news content, including creation, deletion, and updating posts for both premium and normal user sections.
 
 ## Technologies Used
-- ## Frontend: React.js, Tailwind css 
-- ## Backend: Node.js, Express.js
-- ## Database: MongoDB
-- ## Payment Gateway Integration: Stripe
-
-## Basic Features
-
-- User Roles
-- Profile page where users can update their avatar and display name.
-- Dark mode can be enabled.
+- Frontend: React.js, Tailwind css 
+- Backend: Node.js, Express.js
+- Database: MongoDB
+- Payment Gateway Integration: Stripe
 
 ## Getting Started
 
