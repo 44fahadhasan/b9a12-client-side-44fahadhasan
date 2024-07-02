@@ -1,4 +1,7 @@
-## project overview
+## Newspaper Website Project
+
+## overview
+The newspaper website project provides a platform catering to both normal and premium users, offering access to a variety of news articles. Users can subscribe to premium content using integrated payment methods. The admin dashboard facilitates user and content management, ensuring smooth operation and engagement.
 
 ## Feature
 
@@ -17,7 +20,7 @@
 
 ## Basic Features
 
-- Users can register/login via email and password.
+- User Roles
 - Profile page where users can update their avatar and display name.
 - Dark mode can be enabled.
 
