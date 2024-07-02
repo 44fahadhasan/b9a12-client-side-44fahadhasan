@@ -93,7 +93,7 @@ const PopularBlog = () => {
                     <div className="flex items-center mt-4 cursor-pointer text-white hover:text-gray-200 hover:underline">
                       <button
                         onClick={() =>
-                          navigate(`/Article-Details/${blogOne?._id}`)
+                          navigate(`/Article-Details/${blogTwo?._id}`)
                         }
                       >
                         <p className="pr-2 text-sm font-medium leading-none">
@@ -132,7 +132,7 @@ const PopularBlog = () => {
               <div className="w-full lg:w-2/3">
                 {popularArticles?.slice(2)?.map((popularArticle) => (
                   <Link
-                    to={`/Article-Details/${blogOne?._id}`}
+                    to={`/Article-Details/${popularArticle?._id}`}
                     key={popularArticle?._id}
                     className="block rounded w-full lg:flex mb-10"
                   >
@@ -161,7 +161,7 @@ const PopularBlog = () => {
                             {popularArticle?.author?.name}
                           </p>
                           <p className="text-gray-600 text-xs">
-                            {new Date(blogOne?.time).toLocaleDateString(
+                            {new Date(popularArticle?.time).toLocaleDateString(
                               "en-US"
                             )}
                           </p>

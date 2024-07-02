@@ -8,7 +8,11 @@ const FeedbackCard = ({ feedback }) => {
   return (
     <div className="swiper-slide group bg-white border border-solid border-gray-300 rounded-2xl max-sm:max-w-sm max-sm:mx-auto p-6 transition-all duration-500 hover:border-indigo-600">
       <div className="flex items-center gap-5 mb-5 sm:mb-9">
-        <img src={image} alt="avatar" />
+        <img
+          src={image}
+          alt="avatar"
+          className="w-12 h-12 object-cover rounded"
+        />
         <div className="grid gap-1">
           <h5 className="text-gray-900 font-medium transition-all duration-500  ">
             {name}

@@ -61,7 +61,7 @@ const ArticlesCardAdmin = ({
           <h3 title={title} className="text-xl font-bold text-[#333]">
             {title?.slice(0, 23)}
           </h3>
-          <div className="h-0 overflow-hidden group-hover:h-[70px] group-hover:mt-1 transition-all duration-300">
+          <div className="h-0 overflow-hidden group-hover:h-[100px] sm:group-hover:h-[90px] group-hover:mt-1 transition-all duration-300">
             <p title={description} className="text-gray-600 text-sm">
               {description?.slice(0, 70)}...
             </p>
