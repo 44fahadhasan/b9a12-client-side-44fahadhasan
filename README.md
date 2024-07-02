@@ -1,7 +1,7 @@
 ## Newspaper Website Project
 
 ## overview
-The newspaper website project provides a platform catering to both normal and premium users, offering access to a variety of news articles. Users can subscribe to premium content using integrated payment methods. The admin dashboard facilitates user and content management, ensuring smooth operation and engagement.
+The newspaper website project provides a platform for both normal and premium users to access news articles. Users can subscribe to premium content using integrated payment methods. The admin dashboard facilitates user and content management, ensuring smooth operation.
 
 ## Key Features
 
@@ -10,7 +10,7 @@ The newspaper website project provides a platform catering to both normal and pr
 - Premium Users: Access to exclusive premium news content upon subscription.
 
 ## Subscription System
-- Users can upgrade to premium membership using a payment method integrated into the platform.
+- Users can upgrade to premium membership using integrated payment methods.
 
 ## Admin Dashboard
 - Allows administrators to manage users, including creation, deletion, and updating user profiles.
