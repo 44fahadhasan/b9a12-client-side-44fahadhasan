@@ -10,10 +10,10 @@
 
 ## Technologies Used
 
-- React and TailwindCSS for the frontend
+- TailwindCSS, React used in front-end 
 - Firebase for authentication
 - Node/Express for creating API endpoints
-- MongoDB for storing chat room members and their messages
+- MongoDB for database 
 
 ## Basic Features
 
