@@ -100,8 +100,8 @@ To run this project locally:
    `cd b9a12-client-side-44fahadhasan && npm run dev`
 
 9. **Access the app:**
-- Visit `http://localhost:3000`.
+  `http://localhost:3000`.
 
 ## Live Demo
-Check out the live version of the project [here](https://your-live-link.com).
+Check out the live version of the project [here](https://b9a12-client-side-44fahadhasan.netlify.app).
 
