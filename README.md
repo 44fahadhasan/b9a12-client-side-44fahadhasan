@@ -13,8 +13,8 @@ The newspaper website project provides a platform for both normal and premium us
 - Users can upgrade to premium membership using integrated payment methods.
 
 ## Admin Dashboard
-- Allows administrators to manage users, including creation, deletion, and updating user profiles.
-- Provides functionalities for managing news content, including creation, deletion, and updating posts for both premium and normal user sections.
+- Manage users: creation, deletion, and updating profiles.
+- Manage news content: creation, deletion, and updating posts for both premium and normal sections.
 
 ## Technologies Used
 - Frontend: React.js, Tailwind css 
@@ -24,25 +24,27 @@ The newspaper website project provides a platform for both normal and premium us
 
 ## Getting Started
 
-To run this project locally, follow these steps:
+To run this project locally:
 
-1. Clone the repository.
-2. Install the dependencies:
+1. Clone the repository :
+   - [client](https://github.com/44fahadhasan/b9a12-client-side-44fahadhasan)
+   - [server](https://github.com/44fahadhasan/b9a12-server-side-44fahadhasan)
+3. Install the dependencies:
    - Navigate to the `b9a12-client-side-44fahadhasan` directory and run `npm install`.
    - Navigate to the `b9a12-server-side-44fahadhasan` directory and run `npm install`.
-3. Set up Firebase:
+4. Set up Firebase:
    - Go to the [Firebase Console](https://console.firebase.google.com/).
    - Create a new project or select an existing one.
    - Go to the project settings or service accounts section.
    - Click on "Generate new private key" or a similar option.
    
-4. Set up Environment Variables:
+5. Set up Environment Variables:
    - In the `b9a12-client-side-44fahadhasan` directory, create a new file named `.env` based on the `.env.local` file.
    - Update the values of the environment variables in the `.env` file with your Firebase configuration details.
    - In the `b9a12-server-side-44fahadhasan` directory, create a new file named `.env` based on the `.env` file.
    - Update the values of the environment variables in the `.env` file according to your preferences. For example, set the `PORT` variable to specify the desired port for the server and set `MONGO_URI` to your MongoDB connection URI.
-5. Run the server:
+6. Run the server:
    - Navigate to the `b9a12-server-side-44fahadhasan` directory and run `npm run dev`.
-6. Run the client:
+7. Run the client:
    - Navigate to the `b9a12-client-side-44fahadhasan` directory and run `npm run dev`.
-7. The application will be accessible at `http://localhost:3000`.
+8. The application will be accessible at `http://localhost:3000`.
