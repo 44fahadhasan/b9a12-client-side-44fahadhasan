@@ -5,14 +5,14 @@ The newspaper website project provides a platform catering to both normal and pr
 
 ## Feature
 
-##User Roles
+## User Roles
 - ##Normal Users: Access to free news content.
 - ##Premium Users: Access to exclusive premium news content upon subscription.
 
-##Subscription System
+## Subscription System
 - Users can upgrade to premium membership using a payment method integrated into the platform.
 
-##Admin Dashboard
+## Admin Dashboard
 - Allows administrators to manage users, including creation, deletion, and updating user profiles.
 - Provides functionalities for managing news content, including creation, deletion, and updating posts for both premium and normal user sections.
 
