@@ -80,8 +80,10 @@ The newspaper website project provides a platform for both normal and premium us
 To run this project locally:
 
 1. **Clone the repository:**
+   - [client](https://github.com/44fahadhasan/b9a12-client-side-44fahadhasan)
+   - [server](https://github.com/44fahadhasan/b9a12-server-side-44fahadhasan)
 
-2. **Install dependencies:**
+3. **Install dependencies:**
 - `cd b9a12-client-side-44fahadhasan && npm install`
 - `cd b9a12-server-side-44fahadhasan && npm install`
 
@@ -92,10 +94,12 @@ To run this project locally:
 - Create `.env` files in both directories with Firebase and MongoDB credentials.
 
 5. **Run the server:**
+   `cd b9a12-server-side-44fahadhasan && npm run dev`
 
-6. **Run the client:**
+7. **Run the client:**
+   `cd b9a12-client-side-44fahadhasan && npm run dev`
 
-7. **Access the app:**
+9. **Access the app:**
 - Visit `http://localhost:3000`.
 
 ## Live Demo
