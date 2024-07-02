@@ -6,8 +6,8 @@ The newspaper website project provides a platform catering to both normal and pr
 ## Feature
 
 ## User Roles
-- ##Normal Users: Access to free news content.
-- ##Premium Users: Access to exclusive premium news content upon subscription.
+- ## Normal Users: Access to free news content.
+- ## Premium Users: Access to exclusive premium news content upon subscription.
 
 ## Subscription System
 - Users can upgrade to premium membership using a payment method integrated into the platform.
@@ -17,10 +17,10 @@ The newspaper website project provides a platform catering to both normal and pr
 - Provides functionalities for managing news content, including creation, deletion, and updating posts for both premium and normal user sections.
 
 ## Technologies Used
-- ##Frontend: React.js, Tailwind css 
-- ##Backend: Node.js, Express.js
-- ##Database: MongoDB
-- ##Payment Gateway Integration: Stripe
+- ## Frontend: React.js, Tailwind css 
+- ## Backend: Node.js, Express.js
+- ## Database: MongoDB
+- ## Payment Gateway Integration: Stripe
 
 ## Basic Features
 
