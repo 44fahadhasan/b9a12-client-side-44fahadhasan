@@ -13,8 +13,8 @@ The newspaper website project provides a platform for both normal and premium us
 - Users can upgrade to premium membership using integrated payment methods.
 
 ### Admin Dashboard
-- **Manage users: creation, deletion, and updating profiles.
-- **Manage news content: creation, deletion, and updating posts for both premium and normal sections.
+- **Manage users:** creation, deletion, and updating profiles.
+- **Manage news content:** creation, deletion, and updating posts for both premium and normal sections.
 
 ## Technologies Used
 - **Frontend:** React.js, Tailwind CSS
