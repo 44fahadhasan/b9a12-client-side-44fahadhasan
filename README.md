@@ -37,7 +37,7 @@ To run this project locally, follow these steps:
    - Click on "Generate new private key" or a similar option.
    
 4. Set up Environment Variables:
-   - In the `frontend` directory, create a new file named `.env` based on the `.env.local` file.
+   - In the `b9a12-client-side-44fahadhasan` directory, create a new file named `.env` based on the `.env.local` file.
    - Update the values of the environment variables in the `.env` file with your Firebase configuration details.
    - In the root directory, create a new file named `.env` based on the `.env.local` file.
    - Update the values of the environment variables in the `.env` file according to your preferences. For example, set the `PORT` variable to specify the desired port for the server and set `MONGO_URI` to your MongoDB connection URI.
