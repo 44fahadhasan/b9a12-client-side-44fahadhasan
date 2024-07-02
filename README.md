@@ -45,3 +45,6 @@ To run this project locally:
      
 8. Run the client:
    - cd b9a12-client-side-44fahadhasan && npm run dev
+     
+8. Access the app:
+   - Visit `http://localhost:3000`
